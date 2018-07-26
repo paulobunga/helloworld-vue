@@ -7,7 +7,7 @@
       prominent>
 
 
-      <v-toolbar-title>{{ $route.path === '/login' ? 'Fyli' : $route.name }}</v-toolbar-title>
+      <v-toolbar-title>{{ $route.path === '/login' ? 'Hello World' : $route.name }}</v-toolbar-title>
 
       <v-spacer/>
 

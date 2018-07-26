@@ -29,7 +29,7 @@
               style="width: auto;" >
           </v-list-tile-avatar>
           <v-list-tile-content>
-            <v-list-tile-title>Fyli</v-list-tile-title>
+            <v-list-tile-title>Hello World</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
       </v-list>
@@ -104,7 +104,7 @@
       </v-toolbar-side-icon>
 
 
-      <v-toolbar-title>{{ $route.path === '/home' ? 'Fyli' : $route.name }}</v-toolbar-title>
+      <v-toolbar-title>{{ $route.path === '/home' ? 'Hello World' : $route.name }}</v-toolbar-title>
 
       <v-spacer/>
 

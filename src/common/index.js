@@ -14,8 +14,11 @@ if (process.env.NODE_ENV === 'development') {
 /**
  * Setup Logger
  */
-Logger.setup('fyli');
+
+const PREFIX = 'HelloWorld';
+
+Logger.setup(PREFIX);
 
 if (process.env.NODE_ENV === 'development') {
-  Logger.enable('fyli*');
+  Logger.enable(`${PREFIX}*`);
 }

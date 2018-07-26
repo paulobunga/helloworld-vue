@@ -49,8 +49,8 @@ export default router;
 
 router.afterEach((to, from) => {
   if (to.path === '/home') {
-    document.title = 'Fyli';
+    document.title = 'Hello World';
     return;
   }
-  document.title = `Fyli | ${to.name}`;
+  document.title = `Hello World | ${to.name}`;
 });
