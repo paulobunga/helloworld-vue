@@ -1,7 +1,7 @@
 {
   "name": "Fyli",
   "short_name": "Fyli",
-  "description": "fi click ijike!",
+  "description": "Some slogan here!",
   "lang": "fr",
   "start_url": "/",
   "display": "standalone",
@@ -19,6 +19,5 @@
   ],
   "background_color": "#303030",
   "theme_color": "#FFD008",
-  "related_applications": [
-  ]
+  "related_applications": []
 }
