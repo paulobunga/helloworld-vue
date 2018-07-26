@@ -1,7 +1,13 @@
+import { sync } from 'vuex-router-sync';
+
 import * as CONFIG from '~/common/config';
 
+import router from './Session.router';
+
 export default {
-  name: 'App',
+  name: 'Session',
+
+  router,
 
   data: () => ({
     releaseVersion: CONFIG.RELEASE_VERSION,
@@ -19,6 +25,12 @@ export default {
     ],
   }),
 
+  methods: {
+    logout() {
+      this.$store.dispatch('auth.logout');
+    },
+  },
+
   created() {
     if (process.env.NODE_ENV === 'development') {
       this.$data.navigationMenuItems.push({
@@ -27,8 +39,14 @@ export default {
         route: '/sample',
       });
     }
+  },
 
-    this.$vuetify.theme.primary = '#1687A7';
-    this.$vuetify.theme.accent = '#003459';
+  mounted() {
+    this.$router.push('/');
+    this.unsync = sync(this.$store, this.$router);
+  },
+
+  beforeDestroy() {
+    this.unsync();
   },
 };

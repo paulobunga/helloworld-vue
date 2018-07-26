@@ -36,12 +36,17 @@ const store = new Vuex.Store({
       state.processing = value;
     },
 
-    navigationDrawerVisible(state, value = false) {
+    navigationDrawerVisible: (state, value = false) => {
       state.navigationDrawerVisible = value;
     },
 
     detailsDrawerVisible: (state, value = false) => {
       state.detailsDrawerVisible = value;
+    },
+
+    resetDrawers: (state) => {
+      state.navigationDrawerVisible = false;
+      state.detailsDrawerVisible = false;
     },
 
     authenticated: (state, value = false) => {
@@ -84,7 +89,7 @@ const store = new Vuex.Store({
 
     'auth.login': (context, { username, password }) => {
       context.dispatch('processing.start');
-      AuthService.login(username, password)
+      return AuthService.login(username, password)
         .then(({ user }) => {
           context.commit('user', user);
           context.commit('authenticated', true);
@@ -94,10 +99,11 @@ const store = new Vuex.Store({
 
     'auth.logout': (context) => {
       context.dispatch('processing.start');
-      AuthService.logout()
+      return AuthService.logout()
         .then(() => {
           context.commit('user');
           context.commit('authenticated');
+          context.commit('resetDrawers');
         })
         .finally(() => context.dispatch('processing.done'));
     },
