@@ -18,7 +18,6 @@ const store = new Vuex.Store({
       reducer({
         route, processing, navigationDrawerVisible, detailsDrawerVisible, ...state
       }) {
-        console.log('reducer', state);
         return state;
       },
     }),
