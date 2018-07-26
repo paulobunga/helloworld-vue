@@ -15,36 +15,54 @@ const store = new Vuex.Store({
 
   state: {
     authenticated: false,
-    loading: false,
-    navigationDrawer: false,
-    detailsDrawer: false,
+    user: false,
+    processing: false,
+    navigationDrawerVisible: false,
+    detailsDrawerVisible: false,
   },
 
   mutations: {
-    AUTHENTICATED(state, authenticated) {
+    AUTHENTICATED(state, authenticated = false) {
       state.authenticated = authenticated;
     },
 
-    LOADING(state, loading) {
-      state.loading = loading;
+    USER(state, user = null) {
+      state.user = user;
     },
 
-    NAVIGATION_DRAWER(state, navigationDrawer) {
-      state.navigationDrawer = navigationDrawer;
+    PROCESSING(state, processing = false) {
+      state.processing = processing;
     },
 
-    DETAILS_DRAWER(state, detailsDrawer) {
-      state.detailsDrawer = detailsDrawer;
+    NAVIGATION_DRAWER(state, navigationDrawerVisible) {
+      state.navigationDrawerVisible = navigationDrawerVisible;
+    },
+
+    DETAILS_DRAWER(state, detailsDrawerVisible) {
+      state.detailsDrawerVisible = detailsDrawerVisible;
     },
   },
 
   actions: {
-    startLoading(context) {
-      context.commit('LOADING', true);
+    login(context) {
+      context.commit('AUTHENTICATED', true);
+      context.commit('USER', {
+        name: 'John Doe',
+        email: 'john@example.com',
+      });
     },
 
-    stopLoading(context) {
-      context.commit('LOADING', false);
+    logout(context) {
+      context.commit('AUTHENTICATED');
+      context.commit('USER');
+    },
+
+    processing(context) {
+      context.commit('PROCESSING', true);
+    },
+
+    done(context) {
+      context.commit('PROCESSING');
     },
 
     showNavigationDrawer(context) {
@@ -57,13 +75,13 @@ const store = new Vuex.Store({
       context.commit('NAVIGATION_DRAWER', false);
     },
 
-    showDetailsDrawer(context) {
-      debug('showDetailsDrawer', context);
+    showDetailsDrawerVisible(context) {
+      debug('showDetailsDrawerVisible', context);
       context.commit('DETAILS_DRAWER', true);
     },
 
-    hideDetailsDrawer(context) {
-      debug('showDetailsDrawer', context);
+    hideDetailsDrawerVisible(context) {
+      debug('showDetailsDrawerVisible', context);
       context.commit('DETAILS_DRAWER', false);
     },
   },
@@ -72,9 +90,5 @@ const store = new Vuex.Store({
     development: () => process.env.NODE_ENV === 'development',
   },
 });
-
-if (process.env.NODE_ENV === 'development') {
-  global.$store = store;
-}
 
 export default store;

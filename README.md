@@ -31,6 +31,13 @@ npm run test:e2e
 npm run build
 ```
 
+## Debugging
+
+```javascript
+// show processing indicator
+$app.$store.state.processing = true;
+```
+
 ## Ressources
 
 - Libraries

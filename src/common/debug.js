@@ -18,3 +18,7 @@ export const { create, error } = debug;
 if (process.env.NODE_ENV === 'development' && localStorage && !localStorage.debug) {
   localStorage.debug = `${PREFIX}*`;
 }
+
+if (process.env.NODE_ENV === 'development') {
+  global.$debug = create('debug');
+}

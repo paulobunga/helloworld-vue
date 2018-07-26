@@ -3,7 +3,7 @@
 
     <v-navigation-drawer
       id="navigationDrawer"
-      v-model="$store.state.navigationDrawer"
+      v-model="$store.state.navigationDrawerVisible"
       app
       temporary
       fixed>
@@ -63,7 +63,7 @@
 
     <v-navigation-drawer
       id="detailsDrawer"
-      v-model="$store.state.detailsDrawer"
+      v-model="$store.state.detailsDrawerVisible"
       app
       temporary
       fixed
@@ -84,7 +84,11 @@
         id="navigationDrawerTrigger"
         @click.stop="$store.dispatch('showNavigationDrawer')">
 
-        <v-progress-circular v-if="$store.state.loading" :size="20" :width="2" indeterminate/>
+        <v-progress-circular
+          v-if="$store.state.processing"
+          :size="20"
+          :width="2"
+          indeterminate/>
 
       </v-toolbar-side-icon>
 

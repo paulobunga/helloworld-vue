@@ -27,8 +27,12 @@ import './registerServiceWorker';
 
 sync(store, router);
 
-new Vue({
+const app = new Vue({
   store,
   router,
   render: (h) => h(App),
 }).$mount('#app');
+
+if (process.env.NODE_ENV === 'development') {
+  global.$app = app;
+}
