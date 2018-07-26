@@ -1,7 +1,8 @@
 <template>
-  <div class="home">
+  <div class="-x-view -x-view-content">
     <img src="../assets/logo.png">
-  <h1>Welcome to Your Vue.js App<h1/></h1></div>
+    <h1>Welcome to Your Vue.js App<h1/></h1>
+  </div>
 </template>
 
 <script>

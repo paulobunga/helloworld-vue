@@ -28,7 +28,7 @@ export default {
       });
     }
 
-    this.$vuetify.theme.primary = '#FFD008';
+    this.$vuetify.theme.primary = '#1687A7';
     this.$vuetify.theme.accent = '#FBC02D';
   },
 };
