@@ -29,6 +29,6 @@ export default {
     }
 
     this.$vuetify.theme.primary = '#1687A7';
-    this.$vuetify.theme.accent = '#FBC02D';
+    this.$vuetify.theme.accent = '#003459';
   },
 };

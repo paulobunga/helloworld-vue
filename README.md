@@ -18,12 +18,27 @@ npm run dev
 # lint
 npm run lint
 
-# run your unit tests
+# run all tests
+npm test
+
+# run unit tests
 npm run test:unit
 
-# run your end-to-end tests
+# run end-to-end tests
 npm run test:e2e
 
 # build for production
 npm run build
 ```
+
+## Ressources
+
+- Libraries
+  - [Vue.js](https://vuejs.org/v2/guide/)
+  - [Vue Router](https://router.vuejs.org/en/)
+  - [Vuex](https://vuex.vuejs.org/en/)
+- Tooling
+  - [vue-loader](http://vuejs.github.io/vue-loader)
+  - [Vue.js Webpack Template](http://vuejs-templates.github.io/webpack/)
+- E2E Testing
+  - [Nightwatch.js](http://nightwatchjs.org/)

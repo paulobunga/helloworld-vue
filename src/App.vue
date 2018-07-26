@@ -82,7 +82,12 @@
 
       <v-toolbar-side-icon
         id="navigationDrawerTrigger"
-        @click.stop="$store.dispatch('showNavigationDrawer')"/>
+        @click.stop="$store.dispatch('showNavigationDrawer')">
+
+        <v-progress-circular v-if="$store.state.loading" :size="20" :width="2" indeterminate/>
+
+      </v-toolbar-side-icon>
+
 
       <v-toolbar-title>{{ $route.path === '/home' ? 'Fyli' : $route.name }}</v-toolbar-title>
 

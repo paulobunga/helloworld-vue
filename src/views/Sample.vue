@@ -1,7 +1,7 @@
 <template>
   <div>
 
-    <h1>Use this view to develop/test components</h1>
+    <h2>Use this view to develop/test components</h2>
 
     <div
       v-for="value in valueSet1"

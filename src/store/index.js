@@ -14,12 +14,17 @@ const store = new Vuex.Store({
   // plugins: [createPersistedState()],
 
   state: {
+    authenticated: false,
     loading: false,
     navigationDrawer: false,
     detailsDrawer: false,
   },
 
   mutations: {
+    AUTHENTICATED(state, authenticated) {
+      state.authenticated = authenticated;
+    },
+
     LOADING(state, loading) {
       state.loading = loading;
     },
@@ -67,5 +72,9 @@ const store = new Vuex.Store({
     development: () => process.env.NODE_ENV === 'development',
   },
 });
+
+if (process.env.NODE_ENV === 'development') {
+  global.$store = store;
+}
 
 export default store;
