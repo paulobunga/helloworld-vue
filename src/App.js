@@ -1,10 +1,10 @@
-import CONFIG from '~/common/config';
+import * as CONFIG from '~/common/config';
 
 export default {
   name: 'App',
 
   data: () => ({
-    buildVersion: CONFIG.APP_VERSION,
+    releaseVersion: CONFIG.RELEASE_VERSION,
     navigationMenuItems: [
       {
         title: 'Home',

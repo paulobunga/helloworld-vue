@@ -1,8 +1,6 @@
-const debug = require('~/common/debug').create('~/common/config'); // eslint-disable-line global-require
+import { debug } from './logger';
 
-const CONFIG = {};
-
-export default CONFIG;
+export { RELEASE_VERSION, RELEASE_DATE } from './release';
 
 const CONFIG_OVERRIDE = {};
 
@@ -16,12 +14,9 @@ if (localStorage && localStorage.CONFIG_OVERRIDE) {
 
 debug('CONFIG_OVERRIDE', CONFIG_OVERRIDE);
 
-CONFIG.ENV = process.env.NODE_ENV;
-
-CONFIG.APP_VERSION = process.env.APP_VERSION || 'LATEST';
-
-CONFIG.ENDPOINT = CONFIG.ENV === 'production' ? 'https://api.fily.com' : 'http://localhost:1337';
-
-Object.assign(CONFIG, CONFIG_OVERRIDE);
-
-debug('CONFIG', CONFIG);
+// export const API_ENDPOINT_ = CONFIG_OVERRIDE.CONFIG_OVERRIDE
+//   || (process.env.NODE_ENV === 'production' ? 'https://api.fily.com' : 'http://localhost:1337');
+export const API_ENDPOINT = CONFIG_OVERRIDE.CONFIG_OVERRIDE
+  || (process.env.NODE_ENV === 'production'
+    ? 'https://api.fily.com'
+    : 'http://private-5bf85-starterspecapi.apiary-mock.com');

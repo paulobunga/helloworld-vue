@@ -33,9 +33,20 @@ npm run build
 
 ## Debugging
 
+From DevTools
+
 ```javascript
-// show processing indicator
-$app.$store.state.processing = true;
+// use logger
+Logger.debug('Hello World!');
+
+// check if there is an authenticated session
+AuthService.isAuthenticated();
+
+// get state from store
+$app.$store.state.myField;
+
+// dispatch action from store
+$app.$store.dispatch('myAction' /* args */);
 ```
 
 ## Ressources

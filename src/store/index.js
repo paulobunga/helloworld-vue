@@ -1,88 +1,106 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-// import createPersistedState from 'vuex-persistedstate';
+
+import createPersistedState from 'vuex-persistedstate';
 
 // import router from '~/router';
 
-const debug = require('~/common/debug').create('~/store'); // eslint-disable-line global-require
+import { debug } from '~/common/logger';
+import { AuthService } from '../common/Auth.service';
 
 Vue.use(Vuex);
 
 /* eslint no-param-reassign: ["error", { "props": false }] */
 
 const store = new Vuex.Store({
-  // plugins: [createPersistedState()],
+  plugins: [
+    createPersistedState({
+      reducer({
+        route, processing, navigationDrawerVisible, detailsDrawerVisible, ...state
+      }) {
+        console.log('reducer', state);
+        return state;
+      },
+    }),
+  ],
 
   state: {
-    authenticated: false,
-    user: false,
     processing: false,
     navigationDrawerVisible: false,
     detailsDrawerVisible: false,
+    authenticated: false,
+    user: null,
   },
 
   mutations: {
-    AUTHENTICATED(state, authenticated = false) {
-      state.authenticated = authenticated;
+    processing: (state, value = false) => {
+      state.processing = value;
     },
 
-    USER(state, user = null) {
-      state.user = user;
+    navigationDrawerVisible(state, value = false) {
+      state.navigationDrawerVisible = value;
     },
 
-    PROCESSING(state, processing = false) {
-      state.processing = processing;
+    detailsDrawerVisible: (state, value = false) => {
+      state.detailsDrawerVisible = value;
     },
 
-    NAVIGATION_DRAWER(state, navigationDrawerVisible) {
-      state.navigationDrawerVisible = navigationDrawerVisible;
+    authenticated: (state, value = false) => {
+      state.authenticated = value;
     },
 
-    DETAILS_DRAWER(state, detailsDrawerVisible) {
-      state.detailsDrawerVisible = detailsDrawerVisible;
+    user: (state, value = null) => {
+      state.user = value;
     },
   },
 
   actions: {
-    login(context) {
-      context.commit('AUTHENTICATED', true);
-      context.commit('USER', {
-        name: 'John Doe',
-        email: 'john@example.com',
-      });
+    'processing.start': (context) => {
+      context.commit('processing', true);
     },
 
-    logout(context) {
-      context.commit('AUTHENTICATED');
-      context.commit('USER');
+    'processing.done': (context) => {
+      context.commit('processing');
     },
 
-    processing(context) {
-      context.commit('PROCESSING', true);
+    'NavigationDrawer.show': (context) => {
+      debug('NavigationDrawer.show', context);
+      context.commit('navigationDrawerVisible', true);
     },
 
-    done(context) {
-      context.commit('PROCESSING');
+    'NavigationDrawer.hide': (context) => {
+      debug('NavigationDrawer.show', context);
+      context.commit('navigationDrawerVisible');
     },
 
-    showNavigationDrawer(context) {
-      debug('showNavigationDrawer', context);
-      context.commit('NAVIGATION_DRAWER', true);
+    'DetailsDrawer.show': (context) => {
+      debug('DetailsDrawer.show', context);
+      context.commit('detailsDrawerVisible', true);
     },
 
-    hideNavigationDrawer(context) {
-      debug('showNavigationDrawer', context);
-      context.commit('NAVIGATION_DRAWER', false);
+    'DetailsDrawer.hide': (context) => {
+      debug('DetailsDrawer.show', context);
+      context.commit('detailsDrawerVisible');
     },
 
-    showDetailsDrawerVisible(context) {
-      debug('showDetailsDrawerVisible', context);
-      context.commit('DETAILS_DRAWER', true);
+    'auth.login': (context, { username, password }) => {
+      context.dispatch('processing.start');
+      AuthService.login(username, password)
+        .then(({ user }) => {
+          context.commit('user', user);
+          context.commit('authenticated', true);
+        })
+        .finally(() => context.dispatch('processing.done'));
     },
 
-    hideDetailsDrawerVisible(context) {
-      debug('showDetailsDrawerVisible', context);
-      context.commit('DETAILS_DRAWER', false);
+    'auth.logout': (context) => {
+      context.dispatch('processing.start');
+      AuthService.logout()
+        .then(() => {
+          context.commit('user');
+          context.commit('authenticated');
+        })
+        .finally(() => context.dispatch('processing.done'));
     },
   },
 

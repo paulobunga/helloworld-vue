@@ -56,7 +56,7 @@
       <div
         class="caption"
         style="position: absolute; right: 16px; bottom: 16px;">
-        Version: {{ buildVersion }}
+        Version: {{ releaseVersion }}
       </div>
 
     </v-navigation-drawer>
@@ -82,7 +82,7 @@
 
       <v-toolbar-side-icon
         id="navigationDrawerTrigger"
-        @click.stop="$store.dispatch('showNavigationDrawer')">
+        @click.stop="$store.dispatch('NavigationDrawer.show')">
 
         <v-progress-circular
           v-if="$store.state.processing"
