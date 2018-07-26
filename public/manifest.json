@@ -1,6 +1,10 @@
 {
-  "name": "fyli-web",
-  "short_name": "fyli-web",
+  "name": "Fyli",
+  "short_name": "Fyli",
+  "description": "fi click ijike!",
+  "lang": "fr",
+  "start_url": "/",
+  "display": "standalone",
   "icons": [
     {
       "src": "/img/icons/android-chrome-192x192.png",
@@ -13,8 +17,8 @@
       "type": "image/png"
     }
   ],
-  "start_url": "/index.html",
-  "display": "standalone",
-  "background_color": "#000000",
-  "theme_color": "#4DBA87"
+  "background_color": "#303030",
+  "theme_color": "#FFD008",
+  "related_applications": [
+  ]
 }

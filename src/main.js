@@ -1,13 +1,34 @@
+import 'babel-polyfill';
+import 'intl';
+import 'intl/locale-data/jsonp/fr';
+import 'whatwg-fetch';
+
+import { sync } from 'vuex-router-sync';
+
+import '~/common/debug';
+
+import '~/common/config';
+import '~/common/event';
+
 import Vue from 'vue';
-import App from './App.vue';
-import router from './router';
-import store from './store';
+
+import '~/common/vue';
+
+import '~/common/vuetify';
+import '~/common/portal';
+
+import '~/components/shared';
+
+import App from '~/App.vue';
+import store from '~/store';
+import router from '~/router';
+
 import './registerServiceWorker';
 
-Vue.config.productionTip = false;
+sync(store, router);
 
 new Vue({
-  router,
   store,
-  render: h => h(App),
+  router,
+  render: (h) => h(App),
 }).$mount('#app');
