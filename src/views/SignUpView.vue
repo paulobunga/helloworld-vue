@@ -7,6 +7,11 @@
     </v-layout>
     <v-form>
       <v-text-field
+        v-model="name"
+        :rules="nameRules"
+        label="Name"
+      ></v-text-field>
+      <v-text-field
           v-model="email"
           label="E-mail"
           :rules="emailRules"
@@ -22,16 +27,10 @@
           counter
           @click:append="showPassword = !showPassword"
         ></v-text-field>
-      <v-btn @click="login()">Log in</v-btn>
-
+      <v-btn @click="signup()">SignUp</v-btn>
     </v-form>
     <v-layout row mt-4>
-      <v-flex xs6>
-        <div> Not a member ? <router-link to="/sign-up"> Sign up now </router-link></div>
-      </v-flex>
-      <v-flex xs6>
-        <router-link to="/recover"> Recover password </router-link>
-      </v-flex>
+      <div> Aleardy have an account <router-link to="/login"> Log in </router-link></div>
     </v-layout>
   </div>
 </template>
@@ -39,6 +38,10 @@
 <script>
   export default {
     data: () => ({
+      name: '',
+      nameRules: [
+        v => !!v || 'name is required',
+      ],
       email: '',
       emailRules: [
         value => !!value || 'Required.',
@@ -52,9 +55,10 @@
       ],
     }),
     methods: {
-      login() {
-        this.$store.dispatch('auth.login', {
-          username: this.email,
+      signup() {
+        this.$store.dispatch('auth.signup', {
+          name: this.name,
+          email: this.email,
           password: this.password,
         });
       },

@@ -87,9 +87,9 @@ const store = new Vuex.Store({
       context.commit('detailsDrawerVisible');
     },
 
-    'auth.login': (context, { username, password }) => {
+    'auth.login': async(context, { username, password }) => {
       context.dispatch('processing.start');
-      return AuthService.login(username, password)
+      return await AuthService.login(username, password)
         .then(({ user }) => {
           context.commit('user', user);
           context.commit('authenticated', true);
@@ -97,6 +97,24 @@ const store = new Vuex.Store({
         .finally(() => context.dispatch('processing.done'));
     },
 
+    'auth.signup': async(context, { name, email, password }) => {
+      context.dispatch('processing.start');
+      return await AuthService.signup(name, email, password)
+        .then(({ user }) => {
+          context.commit('user', user);
+          context.commit('authenticated', true);
+        })
+        .finally(() => context.dispatch('processing.done'));
+    },
+    'auth.recoverPasssword': async(context, { email }) => {
+      initiateAccountRecovery
+      context.dispatch('processing.start');
+      return await AuthService.initiateAccountRecovery(name, email, password)
+        .then(() => {
+          context.commit('authenticated', false);
+        })
+        .finally(() => context.dispatch('processing.done'));
+    },
     'auth.logout': (context) => {
       context.dispatch('processing.start');
       return AuthService.logout()

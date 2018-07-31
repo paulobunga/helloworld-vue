@@ -22,10 +22,7 @@
     </v-toolbar>
 
     <v-content>
-      <v-container
-        fluid
-        fill-height
-        class="-x-relative">
+      <v-container>
         <transition name="fade">
           <router-view/>
         </transition>
