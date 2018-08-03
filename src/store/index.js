@@ -97,6 +97,24 @@ const store = new Vuex.Store({
         .finally(() => context.dispatch('processing.done'));
     },
 
+    'auth.signup': (context, { name, email, password }) => {
+      context.dispatch('processing.start');
+      return AuthService.signup(name, email, password)
+        .then(({ user }) => {
+          context.commit('user', user);
+          context.commit('authenticated', true);
+        })
+        .finally(() => context.dispatch('processing.done'));
+    },
+    'auth.recoverPasssword': (context, { email }) => {
+      initiateAccountRecovery
+      context.dispatch('processing.start');
+      return AuthService.initiateAccountRecovery(name, email, password)
+        .then(() => {
+          context.commit('authenticated', false);
+        })
+        .finally(() => context.dispatch('processing.done'));
+    },
     'auth.logout': (context) => {
       context.dispatch('processing.start');
       return AuthService.logout()
