@@ -1,20 +1,18 @@
 <template>
-  <div>
+  <div class='-x-view -x-view-content'>
     <v-layout row wrap>
-      <v-flex xs8 offset-xs5>
+      <v-flex class="text-md-center">
         <img src="../assets/logo.png">
       </v-flex>
     </v-layout>
     <v-form>
-      <v-text-field
-          v-model="email"
-          label="E-mail"
-          :rules="emailRules"
-        ></v-text-field>
-      <v-btn @click="recoverPassword()">Recover my account</v-btn>
+      <v-text-field v-model="email" label="E-mail" :rules="emailRules"></v-text-field>
+      <v-btn class="white--text" @click="recoverPassword()" block color="teal "> Recover my account </v-btn>
     </v-form>
     <v-layout row mt-4>
-      <div> Aleardy have an account <router-link to="/login"> Log in </router-link></div>
+      <div> Aleardy have an account
+        <router-link to="/login"> Log in </router-link>
+      </div>
     </v-layout>
   </div>
 </template>

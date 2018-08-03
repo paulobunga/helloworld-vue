@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class='-x-view -x-view-content'>
     <v-layout row wrap>
-      <v-flex xs8 offset-xs5>
+      <v-flex class="text-md-center">
         <img src="../assets/logo.png">
       </v-flex>
     </v-layout>
@@ -27,7 +27,12 @@
           counter
           @click:append="showPassword = !showPassword"
         ></v-text-field>
-      <v-btn @click="signup()">SignUp</v-btn>
+      <v-btn
+        class="white--text"
+        @click="signup()"
+        block
+        color="teal "
+      > SignUp </v-btn>
     </v-form>
     <v-layout row mt-4>
       <div> Aleardy have an account <router-link to="/login"> Log in </router-link></div>

@@ -113,7 +113,11 @@
     </v-toolbar>
 
     <v-content>
-      <v-container>
+       <v-container
+        fluid
+        fill-height
+        class='-x-relative'
+      >
         <transition name="fade">
           <router-view/>
         </transition>
