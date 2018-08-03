@@ -4,7 +4,7 @@ import Router from 'vue-router';
 import LoginView from '~/views/LoginView.vue';
 import AboutView from '~/views/AboutView.vue';
 import SignUpView from '~/views/SignUpView.vue';
-import RecoverView from '~/views/RecoverView';
+import RecoveryView from '~/views/RecoveryView';
 // const LoginView = () => import(/* webpackChunkName: "LoginView" */ '~/views/LoginView.vue');
 // const AboutView = () => import(/* webpackChunkName: "AboutView" */ '~/views/AboutView.vue');
 
@@ -23,14 +23,14 @@ const router = new Router({
       component: LoginView,
     },
     {
-      path: '/signup',
-      name: 'SignUp',
+      path: '/sign-up',
+      name: 'Sign Up',
       component: SignUpView,
     },
     {
       path: '/recover',
       name: 'Recover password',
-      component: RecoverView,
+      component: RecoveryView,
     },
     {
       path: '/about',

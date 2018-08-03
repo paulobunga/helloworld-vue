@@ -107,7 +107,7 @@ const store = new Vuex.Store({
         .finally(() => context.dispatch('processing.done'));
     },
     'auth.recoverPasssword': (context, { email }) => {
-      initiateAccountRecovery
+      initiateAccountRecovery;
       context.dispatch('processing.start');
       return AuthService.initiateAccountRecovery(name, email, password)
         .then(() => {

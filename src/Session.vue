@@ -82,8 +82,8 @@
       prominent>
 
       <v-toolbar-side-icon
-        class="white--text"
         id="navigationDrawerTrigger"
+        class="white--text"
         @click.stop="$store.dispatch('NavigationDrawer.show')">
 
         <v-progress-circular
@@ -103,10 +103,10 @@
     </v-toolbar>
 
     <v-content>
-       <v-container
+      <v-container
         fluid
         fill-height
-        class='-x-relative'
+        class="-x-relative"
       >
         <transition name="fade">
           <router-view/>

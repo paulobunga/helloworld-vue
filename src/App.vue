@@ -11,7 +11,6 @@
 <style src="./App.css">
 </style>
 
-
 <script>
 // import Session from './Session.vue';
 // import Entrance from './Entrance.vue';
