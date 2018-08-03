@@ -48,9 +48,5 @@ const router = new Router({
 export default router;
 
 router.afterEach((to, from) => {
-  if (to.path === '/login') {
-    document.title = 'Hello World';
-    return;
-  }
   document.title = `Hello World | ${to.name}`;
 });

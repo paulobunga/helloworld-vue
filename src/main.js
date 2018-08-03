@@ -2,16 +2,16 @@ import './common';
 
 import Vue from 'vue';
 
-import '~/common/vue';
+import './common/vue';
 
-import '~/common/vuetify';
-import '~/common/portal';
+import './common/vuetify';
+import './common/portal';
 
-import '~/components/shared';
+import './components/shared';
 
-import store from '~/store';
+import store from './store';
 
-import App from '~/App.vue';
+import App from './App.vue';
 
 import { AuthService } from './common/Auth.service';
 

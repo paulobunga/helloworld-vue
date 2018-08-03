@@ -1,5 +1,5 @@
 <template>
-  <v-app light>
+  <v-app>
 
     <v-navigation-drawer
       id="navigationDrawer"
@@ -8,28 +8,17 @@
       temporary
       fixed>
 
-      <!-- <v-list class="pa-1">
-        <v-list-tile avatar tag="div">
-          <v-list-tile-avatar>
-            <v-icon class="grey">person</v-icon>
-          </v-list-tile-avatar>
-          <v-list-tile-content>
-            <v-list-tile-title>Anonyme</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-      </v-list> -->
-
       <v-list class="pa-1">
         <v-list-tile
           avatar
           tag="div">
           <v-list-tile-avatar tile>
             <img
-              src="./assets/logo.png"
+              :src="this.$store.state.user.picture"
               style="width: auto;" >
           </v-list-tile-avatar>
           <v-list-tile-content>
-            <v-list-tile-title>Hello World</v-list-tile-title>
+            <v-list-tile-title>{{ this.$store.state.user.name }}</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
       </v-list>
@@ -87,11 +76,13 @@
     </v-navigation-drawer>
 
     <v-toolbar
+      color="primary"
       app
       fixed
       prominent>
 
       <v-toolbar-side-icon
+        class="white--text"
         id="navigationDrawerTrigger"
         @click.stop="$store.dispatch('NavigationDrawer.show')">
 
@@ -103,8 +94,7 @@
 
       </v-toolbar-side-icon>
 
-
-      <v-toolbar-title>{{ $route.path === '/home' ? 'Hello World' : $route.name }}</v-toolbar-title>
+      <v-toolbar-title class="white--text">{{ $route.name }}</v-toolbar-title>
 
       <v-spacer/>
 

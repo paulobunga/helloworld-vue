@@ -1,13 +1,14 @@
 <template>
-  <v-app light>
+  <v-app>
 
     <v-toolbar
+      color="primary"
       app
       fixed
       prominent>
 
-
-      <v-toolbar-title>{{ $route.path === '/login' ? 'Hello World' : $route.name }}</v-toolbar-title>
+      <!-- <v-toolbar-title>{{ $route.path === '/login' ? 'Hello World' : $route.name }}</v-toolbar-title> -->
+      <v-toolbar-title>{{ $route.name }}</v-toolbar-title>
 
       <v-spacer/>
 
