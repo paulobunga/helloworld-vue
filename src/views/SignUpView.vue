@@ -7,6 +7,11 @@
     </v-layout>
     <v-form>
       <v-text-field
+        v-model="name"
+        :rules="nameRules"
+        label="Name"
+      ></v-text-field>
+      <v-text-field
           v-model="email"
           label="E-mail"
           :rules="emailRules"
@@ -24,21 +29,24 @@
         ></v-text-field>
       <v-btn
         class="white--text"
-        @click="login()"
+        @click="signup()"
         block
         color="teal "
-      >Log in</v-btn>
+      > SignUp </v-btn>
     </v-form>
-    <div class="mt-4"> Not a member ? <router-link to="/signup"> Sign up now </router-link></div>
-    <div class="mt-2">
-      <router-link to="/recover"> Recover password </router-link>
-    </div>
+    <v-layout row mt-4>
+      <div> Aleardy have an account <router-link to="/login"> Log in </router-link></div>
+    </v-layout>
   </div>
 </template>
 
 <script>
   export default {
     data: () => ({
+      name: '',
+      nameRules: [
+        v => !!v || 'name is required',
+      ],
       email: '',
       emailRules: [
         value => !!value || 'Required.',
@@ -52,9 +60,10 @@
       ],
     }),
     methods: {
-      login() {
-        this.$store.dispatch('auth.login', {
-          username: this.email,
+      signup() {
+        this.$store.dispatch('auth.signup', {
+          name: this.name,
+          email: this.email,
           password: this.password,
         });
       },
