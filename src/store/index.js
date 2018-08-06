@@ -87,9 +87,9 @@ const store = new Vuex.Store({
       context.commit('detailsDrawerVisible');
     },
 
-    'auth.login': (context, { email, password }) => {
+    'auth.login': (context, { username, password }) => {
       context.dispatch('processing.start');
-      return AuthService.login(email, password)
+      return AuthService.login(username, password)
         .then(({ user }) => {
           context.commit('user', user);
           context.commit('authenticated', true);

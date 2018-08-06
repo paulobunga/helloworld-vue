@@ -1,18 +1,25 @@
+<style src="./AuthView.css">
+</style>
+
 <template>
-  <div>
+  <div class="auth-view">
 
     <v-form
       v-model="isValid"
       class="pt-4">
       <v-text-field
-        v-model="user.email"
+        v-model="$data.email"
         :rules="[$validate.required, $validate.email]"
-        color="$COLOR.black"
-        label="Email"/>
+        validate-on-blur
+        outline
+        color="white"
+        placeholder="Email"
+      />
 
       <v-btn
+        :loading="$store.state.processing"
         :disabled="!isValid"
-        class="white--text mt-4"
+        class="white--text mt-2"
         block
         color="accent"
         @click="initiateAccountRecovery()"
@@ -45,14 +52,14 @@
 <script>
 export default {
   data: () => ({
-    user: {
-      email: '',
-    },
+    email: '',
     isValid: false,
   }),
   methods: {
     initiateAccountRecovery() {
-      this.$store.dispatch('auth.recoverPasssword', this.user);
+      this.$store.dispatch('auth.recoverPasssword', {
+        email: this.$data.email,
+      });
       this.$router.push('/');
     },
   },

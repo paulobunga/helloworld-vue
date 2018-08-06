@@ -1,36 +1,48 @@
+<style src="./AuthView.css">
+</style>
+
 <template>
-  <div>
+
+  <div class="auth-view">
 
     <v-form
       v-model="isValid"
       class="pt-4">
       <v-text-field
-        v-model="user.name"
+        v-model="$data.user.name"
         :rules="[$validate.required]"
-        color="$COLOR.black"
-        label="Name"
+        validate-on-blur
+        outline
+        color="white"
+        placeholder="Name"
       />
 
       <v-text-field
+        v-model="$data.user.email"
         :rules="[$validate.required, $validate.email]"
-        color="$COLOR.black"
-        label="Email"
+        validate-on-blur
+        outline
+        color="white"
+        placeholder="Email"
       />
 
       <v-text-field
-        v-model="user.password"
+        v-model="$data.user.password"
         :append-icon="showPassword ? 'visibility_off' : 'visibility'"
         :rules="[$validate.required, $validate.password]"
         :type="showPassword ? 'text' : 'password'"
-        color="$COLOR.black"
-        label="Password"
+        validate-on-blur
+        outline
+        color="white"
+        placeholder="Password"
         autocomplete="current-password"
         @click:append="showPassword = !showPassword"
       />
 
       <v-btn
+        :loading="$store.state.processing"
         :disabled="!isValid"
-        class="white--text mt-4"
+        class="white--text mt-2"
         block
         color="accent"
         @click="signup()"
@@ -74,7 +86,7 @@ export default {
   }),
   methods: {
     signup() {
-      this.$store.dispatch('auth.signup', this.user);
+      this.$store.dispatch('auth.signup', this.$data.user);
     },
   },
 };

@@ -4,8 +4,6 @@ import Vuetify from 'vuetify';
 
 import { COLOR } from './styles';
 
-// Vue.use(Vuetify);
-
 Vue.use(Vuetify, {
   theme: {
     primary: COLOR.primary,
