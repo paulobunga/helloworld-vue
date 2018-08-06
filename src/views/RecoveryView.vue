@@ -1,44 +1,58 @@
 <template>
-  <div class="-x-view -x-view-content">
-    <v-layout
-      row
-      wrap>
-      <v-flex class="text-md-center">
-        <img src="../assets/logo.png">
-      </v-flex>
-    </v-layout>
-    <v-form>
+  <div>
+
+    <v-form
+      v-model="isValid"
+      class="pt-4">
       <v-text-field
-        v-model="email"
-        :rules="emailRules"
-        label="E-mail"/>
+        v-model="user.email"
+        :rules="[$validate.required, $validate.email]"
+        color="$COLOR.black"
+        label="Email"/>
+
       <v-btn
-        class="white--text"
+        :disabled="!isValid"
+        class="white--text mt-4"
         block
-        color="teal "
-        @click="initiateAccountRecovery()"> Recover my account </v-btn>
+        color="accent"
+        @click="initiateAccountRecovery()"
+      >
+        Recover my account
+      </v-btn>
     </v-form>
+
     <v-layout
-      row
-      mt-4>
-      <div> Aleardy have an account
-        <router-link to="/login"> Log in </router-link>
-      </div>
+      class="mt-2"
+      justify-space-between
+      row>
+      <v-btn
+        class="white--text text-xs-right"
+        right
+        flat
+        to="/login">Log in</v-btn>
+
+      <v-btn
+        class="white--text text-xs-left"
+        left
+        flat
+        to="/sign-up"
+        right>Sign up</v-btn>
     </v-layout>
+
   </div>
 </template>
 
 <script>
 export default {
   data: () => ({
-    email: '',
-    emailRules: [(value) => !!value || 'Required.'],
+    user: {
+      email: '',
+    },
+    isValid: false,
   }),
   methods: {
     initiateAccountRecovery() {
-      this.$store.dispatch('auth.recoverPasssword', {
-        email: this.email,
-      });
+      this.$store.dispatch('auth.recoverPasssword', this.user);
       this.$router.push('/');
     },
   },

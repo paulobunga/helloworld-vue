@@ -5,8 +5,6 @@ import * as FetchHelper from './fetch.helper';
 
 import { createLogger } from './logger';
 
-const Logger = createLogger('AuthService');
-
 export const AuthServiceImplementation = class AuthService {
   events = new EventEmitter();
 

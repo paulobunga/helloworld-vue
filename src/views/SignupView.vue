@@ -1,13 +1,17 @@
 <template>
-
   <div>
 
     <v-form
       v-model="isValid"
       class="pt-4">
+      <v-text-field
+        v-model="user.name"
+        :rules="[$validate.required]"
+        color="$COLOR.black"
+        label="Name"
+      />
 
       <v-text-field
-        v-model="user.email"
         :rules="[$validate.required, $validate.email]"
         color="$COLOR.black"
         label="Email"
@@ -19,7 +23,6 @@
         :rules="[$validate.required, $validate.password]"
         :type="showPassword ? 'text' : 'password'"
         color="$COLOR.black"
-        class="mt-3"
         label="Password"
         autocomplete="current-password"
         @click:append="showPassword = !showPassword"
@@ -30,9 +33,9 @@
         class="white--text mt-4"
         block
         color="accent"
-        @click="login()"
+        @click="signup()"
       >
-        Log in
+        Sign up
       </v-btn>
     </v-form>
 
@@ -41,13 +44,13 @@
       justify-space-between
       row>
       <v-btn
-        class="white--text"
+        class="white--text text-xs-right"
         right
         flat
-        to="/sign-up">Sign up</v-btn>
+        to="/login">Log in</v-btn>
 
       <v-btn
-        class="white--text"
+        class="white--text text-xs-left"
         left
         flat
         to="/recover"
@@ -55,12 +58,14 @@
     </v-layout>
 
   </div>
+
 </template>
 
 <script>
 export default {
   data: () => ({
     user: {
+      name: '',
       email: '',
       password: '',
     },
@@ -68,8 +73,8 @@ export default {
     showPassword: false,
   }),
   methods: {
-    login() {
-      this.$store.dispatch('auth.login', this.user);
+    signup() {
+      this.$store.dispatch('auth.signup', this.user);
     },
   },
 };

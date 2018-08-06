@@ -87,12 +87,13 @@ const store = new Vuex.Store({
       context.commit('detailsDrawerVisible');
     },
 
-    'auth.login': (context, { username, password }) => {
+    'auth.login': (context, { email, password }) => {
       context.dispatch('processing.start');
-      return AuthService.login(username, password)
+      return AuthService.login(email, password)
         .then(({ user }) => {
           context.commit('user', user);
           context.commit('authenticated', true);
+          return user;
         })
         .finally(() => context.dispatch('processing.done'));
     },
@@ -103,6 +104,7 @@ const store = new Vuex.Store({
         .then(({ user }) => {
           context.commit('user', user);
           context.commit('authenticated', true);
+          return user;
         })
         .finally(() => context.dispatch('processing.done'));
     },
