@@ -1,6 +1,3 @@
-<style src="./AuthView.css">
-</style>
-
 <template>
   <div class="auth-view">
 
@@ -57,7 +54,7 @@ export default {
   }),
   methods: {
     initiateAccountRecovery() {
-      this.$store.dispatch('auth.recoverPasssword', {
+      this.$store.dispatch('auth.initiateAccountRecovery', {
         email: this.$data.email,
       });
       this.$router.push('/');

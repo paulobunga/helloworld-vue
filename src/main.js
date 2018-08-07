@@ -9,6 +9,8 @@ import './common/portal';
 
 import './components/shared';
 
+import './Todo';
+
 import store from './store';
 
 import App from './App.vue';

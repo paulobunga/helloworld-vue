@@ -1,5 +1,3 @@
-<style src="./AuthView.css">
-</style>
 
 <template>
 

@@ -1,5 +1,3 @@
-<style src="./AuthView.css">
-</style>
 
 <template>
 
@@ -23,7 +21,7 @@
         :append-icon="showPassword ? 'visibility_off' : 'visibility'"
         :rules="[$validate.required, $validate.password]"
         :type="showPassword ? 'text' : 'password'"
-        validate-on-blur
+        i-validate-on-blur
         outline
         color="white"
         placeholder="Password"
@@ -67,8 +65,8 @@
 <script>
 export default {
   data: () => ({
-    username: '',
-    password: '',
+    username: 'nihel@gmail.com',
+    password: '123456789',
     isValid: false,
     showPassword: false,
   }),

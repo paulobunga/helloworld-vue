@@ -11,6 +11,9 @@
 <style src="./App.css">
 </style>
 
+<style src="./views/AuthView.css">
+</style>
+
 <script>
 // import Session from './Session.vue';
 // import Entrance from './Entrance.vue';

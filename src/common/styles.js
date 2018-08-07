@@ -12,6 +12,7 @@ export const COLOR = {
 
   success: '#2ECC71',
   error: '#E74C3C',
+  // error: '#FF5252',
   info: '#3498DB',
   warning: '#F1C40F',
   off: '#999999',

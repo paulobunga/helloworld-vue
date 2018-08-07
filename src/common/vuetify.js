@@ -10,9 +10,8 @@ Vue.use(Vuetify, {
     secondary: COLOR.primaryDark,
     accent: COLOR.accent,
     inverse: COLOR.inverse,
-
-    success: COLOR.success,
     error: COLOR.error,
+    success: COLOR.success,
     info: COLOR.info,
     warning: COLOR.warning,
     off: COLOR.off,
