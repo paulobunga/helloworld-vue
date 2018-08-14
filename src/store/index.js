@@ -3,10 +3,10 @@ import Vuex from 'vuex';
 
 import createPersistedState from 'vuex-persistedstate';
 
-// import router from '~/router';
-
-import { debug } from '~/common/logger';
+import { debug } from '../common/logger';
 import { AuthService } from '../common/Auth.service';
+
+import todo from '../Todo/Todo.state';
 
 Vue.use(Vuex);
 
@@ -22,6 +22,10 @@ const store = new Vuex.Store({
       },
     }),
   ],
+
+  modules: {
+    todo,
+  },
 
   state: {
     processing: false,
@@ -93,6 +97,7 @@ const store = new Vuex.Store({
         .then(({ user }) => {
           context.commit('user', user);
           context.commit('authenticated', true);
+          return user;
         })
         .finally(() => context.dispatch('processing.done'));
     },
@@ -103,18 +108,20 @@ const store = new Vuex.Store({
         .then(({ user }) => {
           context.commit('user', user);
           context.commit('authenticated', true);
+          return user;
         })
         .finally(() => context.dispatch('processing.done'));
     },
-    'auth.recoverPasssword': (context, { email }) => {
-      initiateAccountRecovery
+
+    'auth.initiateAccountRecovery': (context, { email }) => {
       context.dispatch('processing.start');
-      return AuthService.initiateAccountRecovery(name, email, password)
+      return AuthService.initiateAccountRecovery(email)
         .then(() => {
           context.commit('authenticated', false);
         })
         .finally(() => context.dispatch('processing.done'));
     },
+
     'auth.logout': (context) => {
       context.dispatch('processing.start');
       return AuthService.logout()
