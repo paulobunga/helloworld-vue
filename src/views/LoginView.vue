@@ -65,8 +65,8 @@
 <script>
 export default {
   data: () => ({
-    username: 'nihel@gmail.com',
-    password: '123456789',
+    username: '',
+    password: '',
     isValid: false,
     showPassword: false,
   }),
