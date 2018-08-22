@@ -1,6 +1,6 @@
-# ALVB Vue.js Starter
+# Vue.js Starter
 
-...
+A boilerplate and reference implementation for web applications built with Vue.js, Vuex, and Vuetify.
 
 ## Requirements
 
