@@ -58,7 +58,7 @@ deploy:ftp:
     - build
   script:
     - echo 'deploy via FTP...'
-  when: manual
+  # when: manual
   environment:
       name: production
       url: 'https://react-material.starter.emiketic.com'
