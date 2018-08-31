@@ -12,30 +12,30 @@ cache:
   - node_modules/
 
 before_script:
-  - yarn install
+  - npm run install
 
 lint:
   stage: test
   allow_failure: true
   script:
-    - yarn lint
+    - npm run lint
 
 lint-critical:
   stage: test
   # allow_failure: true
   script:
-    - yarn lint:critical
+    - npm run lint:critical
 
 test:
   stage: test
   allow_failure: true
   script:
-    - yarn test
+    - npm run test
 
 build:
   stage: build
   script:
-    - yarn build
+    - npm run build
   artifacts:
     paths:
       - ./build/
