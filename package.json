@@ -14,8 +14,7 @@
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
     "test": "npm run test:unit && npm run test:e2e",
-    "build": "vue-cli-service build",
-    "deploy:github": "push-dir --dir=dist --branch=gh-pages --remote=git@github.com:emiketic/emiketic-starter-vue.git"
+    "build": "vue-cli-service build"
   },
   "dependencies": {
     "babel-polyfill": "~6.26.0",
