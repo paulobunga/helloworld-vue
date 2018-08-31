@@ -52,11 +52,11 @@ build:
 
 deploy:
   stage: deploy
+  dependencies:
+    - build
   tags:
     - docker
   image: node:8
-  dependencies:
-    - build
   only:
     - master
   script:
