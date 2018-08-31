@@ -48,7 +48,7 @@ deploy:github:
     - yarn deploy:github
   environment:
       name: production
-      url: 'https://emiketic.github.io/emiketic-starter-react-material'
+      url: 'https://emiketic.github.io/emiketic-starter-vue'
   only:
     - master
 
@@ -61,6 +61,6 @@ deploy:ftp:
   # when: manual
   environment:
       name: production
-      url: 'https://react-material.starter.emiketic.com'
+      url: 'https://vue.starter.emiketic.com'
   only:
     - master
