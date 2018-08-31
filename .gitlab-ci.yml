@@ -3,8 +3,6 @@ stages:
   - build
   - deploy
 
-image: node:8
-
 # Cache modules in between jobs
 cache:
   key: ${CI_COMMIT_REF_SLUG}
@@ -16,32 +14,47 @@ before_script:
 
 lint:
   stage: test
+  tags:
+    - docker
+  image: node:8
   allow_failure: true
   script:
     - npm run lint
 
 lint-critical:
   stage: test
+  tags:
+    - docker
+  image: node:8
   # allow_failure: true
   script:
     - npm run lint:critical
 
 test:
   stage: test
+  tags:
+    - docker
+  image: node:8
   allow_failure: true
   script:
     - npm run test
 
 build:
   stage: build
+  tags:
+    - docker
+  image: node:8
   script:
     - npm run build
   artifacts:
     paths:
-      - ./build/
+      - ./dist/
 
 deploy:
   stage: deploy
+  tags:
+    - docker
+  image: node:8
   dependencies:
     - build
   only:
