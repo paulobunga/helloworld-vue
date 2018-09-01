@@ -8,15 +8,14 @@ cache:
   paths:
   - node_modules/
 
-before_script:
-  - npm install
-
 lint:
   stage: test
   tags:
     - docker
   image: node:8
   allow_failure: true
+  before_script:
+    - npm install
   script:
     - npm run lint
 
@@ -26,6 +25,8 @@ lint-critical:
     - docker
   image: node:8
   # allow_failure: true
+  before_script:
+    - npm install
   script:
     - npm run lint:critical
 
@@ -35,6 +36,8 @@ test:
     - docker
   image: node:8
   allow_failure: true
+  before_script:
+    - npm install
   script:
     - npm run test
 
