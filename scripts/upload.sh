@@ -11,9 +11,4 @@ fi
 
 cd $TARGET
 
-for path in $(find -type f)
-do
-  curl --fail --ftp-create-dirs -u "${FTP_USERNAME}:${FTP_PASSWORD}" "ftp://${FTP_DOMAIN}${FTP_PATH}/${path}" -T $path
-done
-
-# scp ./ ${FTP_USERNAME}@ftp.emiketic.com:/starter/vue
+ncftpput -R -v -u "$FTP_USERNAME" -p "$FTP_PASSWORD" "$FTP_DOMAIN" "$FTP_PATH" ./
