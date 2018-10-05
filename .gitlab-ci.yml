@@ -1,51 +1,57 @@
 stages:
+  - prepare
   - test
   - build
   - deploy
+
+image: node:8
 
 cache:
   key: ${CI_COMMIT_REF_SLUG}
   paths:
   - node_modules/
 
+install:
+  stage: prepare
+  tags:
+    - docker
+  script:
+    - npm install
+
 lint:
   stage: test
   tags:
     - docker
-  image: node:8
-  allow_failure: true
   before_script:
     - npm install
   script:
     - npm run lint
+  allow_failure: true
 
 lint-critical:
   stage: test
   tags:
     - docker
-  image: node:8
-  # allow_failure: true
   before_script:
     - npm install
   script:
     - npm run lint:critical
+  # allow_failure: true
 
 test:
   stage: test
   tags:
     - docker
-  image: node:8
-  allow_failure: true
   before_script:
     - npm install
   script:
     - npm run test
+  allow_failure: true
 
 build:
   stage: build
   tags:
     - docker
-  image: node:8
   script:
     - npm run build
   artifacts:
