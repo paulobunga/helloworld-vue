@@ -1,3 +1,4 @@
+
 stages:
   - prepare
   - test
@@ -9,7 +10,7 @@ image: node:8
 cache:
   key: ${CI_COMMIT_REF_SLUG}
   paths:
-  - node_modules/
+    - ./node_modules/
 
 install:
   stage: prepare
