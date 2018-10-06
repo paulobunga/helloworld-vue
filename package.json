@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "babel-polyfill": "~6.26.0",
-    "emiketic-starter-lib": "git+https://github.com/emiketic/emiketic-starter-lib.git",
+    "emiketic-starter-lib": "git+https://github.com/emiketic/emiketic-starter-lib.git#0.1.0",
     "intl": "~1.2.5",
     "portal-vue": "~1.4.0",
     "register-service-worker": "~1.5.2",
