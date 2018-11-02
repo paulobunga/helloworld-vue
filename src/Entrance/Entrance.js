@@ -2,7 +2,7 @@ import { sync } from 'vuex-router-sync';
 
 import * as CONFIG from '~/common/config';
 
-import router from './Entrance.router';
+import router from './router';
 
 export default {
   name: 'Entrance',

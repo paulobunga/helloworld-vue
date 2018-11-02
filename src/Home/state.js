@@ -1,79 +1,79 @@
-import { AuthService } from '../common/Auth.service';
+import { AuthService } from '../Auth/Auth.service';
 
 import { API_ENDPOINT } from '../common/config';
 import * as FetchHelper from '../common/fetch.helper';
 
 /* eslint no-param-reassign: ["error", { "props": false }] */
 
-const Todo = {
+const state = {
   state: {
-    todo: null,
+    task: null,
   },
 
   mutations: {
-    todo: (state, value = null) => {
-      state.todo = value;
+    task: (state, value = null) => {
+      state.task = value;
     },
   },
 
   actions: {
-    'todo.fetch': (context) => {
+    'task.fetch': (context) => {
       context.dispatch('processing.start');
 
-      return fetch(`${API_ENDPOINT}/todo`, {
+      return fetch(`${API_ENDPOINT}/task/index`, {
         headers: {
           Authorization: `Bearer ${AuthService.token}`,
         },
       })
         .then(FetchHelper.ResponseHandler, FetchHelper.ErrorHandler)
         .then(async ({ ...result }) => {
-          const todoSet = result.todo;
-          context.commit('todo', todoSet);
-          return todoSet;
+          const data = result.data;
+          context.commit('task', data);
+          return data;
         })
         .finally(() => context.dispatch('processing.done'));
     },
 
-    'todo.add': (context, todo) => {
+    'task.create': (context, task) => {
       context.dispatch('processing.start');
 
-      return fetch(`${API_ENDPOINT}/todo/add`, {
+      return fetch(`${API_ENDPOINT}/ask/create`, {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${AuthService.token}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          todo,
+          task,
         }),
       })
         .then(FetchHelper.ResponseHandler, FetchHelper.ErrorHandler)
-        .then(async ({ ...result }) => result.todo)
+        .then(async ({ ...result }) => result.task)
         .finally(() => context.dispatch('processing.done'));
     },
 
-    'todo.edit': (context, todo) => {
+    'task.edit': (context, task) => {
       context.dispatch('processing.start');
 
-      return fetch(`${API_ENDPOINT}/todo/${todo.id}/edit`, {
+      return fetch(`${API_ENDPOINT}/task/${task.id}/edit`, {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${AuthService.token}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          todo,
+          task,
         }),
       })
         .then(FetchHelper.ResponseHandler, FetchHelper.ErrorHandler)
-        .then(async ({ ...result }) => result.todo)
+        .then(async ({ ...result }) => result.task)
         .finally(() => context.dispatch('processing.done'));
     },
 
-    'todo.remove': (context, todoId) => {
+    'task.remove': (context, taskId) => {
       context.dispatch('processing.start');
 
-      return fetch(`${API_ENDPOINT}/todo/${todoId}/remove`, {
+      return fetch(`${API_ENDPOINT}/task/${taskId}/remove`, {
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${AuthService.token}`,
@@ -81,7 +81,7 @@ const Todo = {
         },
       })
         .then(FetchHelper.ResponseHandler, FetchHelper.ErrorHandler)
-        .then(async ({ ...result }) => result.todo)
+        .then(async ({ ...result }) => result.task)
         .finally(() => context.dispatch('processing.done'));
     },
   },
@@ -89,4 +89,4 @@ const Todo = {
   getters: {},
 };
 
-export default Todo;
+export default state;

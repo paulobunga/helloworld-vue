@@ -20,7 +20,7 @@
     </v-layout>
 
     <v-layout
-      v-if="!$store.state.processing && this.$data.todos && !this.$data.todos.length"
+      v-if="!$store.state.processing && this.$data.tasks && !this.$data.tasks.length"
       justify-center
       align-center
       column
@@ -33,35 +33,35 @@
         i-flat
         color="primary"
         class="mt-2"
-        @click="fetchTodoSet()">
+        @click="fetchTaskSet()">
         <span class="mr-2">Re-load</span>
         <v-icon>refresh</v-icon>
       </v-btn>
 
     </v-layout>
 
-    <div v-if="!$store.state.processing && this.$data.todos && this.$data.todos.length">
+    <div v-if="!$store.state.processing && this.$data.tasks && this.$data.tasks.length">
       <v-card
-        v-for="todo in todos"
-        :key="todo.id"
+        v-for="task in tasks"
+        :key="task.id"
         class="mb-2">
         <v-card-title>
           <v-checkbox
-            v-model="todo.done"
-            :label="todo.label"
-            :value="todo.done"
+            v-model="task.done"
+            :label="task.label"
+            :value="task.done"
             color="primary"
           />
           <v-spacer/>
           <v-btn icon>
             <v-icon
               color="error"
-              @click="removeTodo(todo)">delete</v-icon>
+              @click="removeTask(task)">delete</v-icon>
           </v-btn>
           <v-btn icon>
             <v-icon
               color="primary"
-              @click="editTodo(todo)">edit</v-icon>
+              @click="editTask(task)">edit</v-icon>
           </v-btn>
         </v-card-title>
       </v-card>
@@ -79,39 +79,39 @@
 
 <script>
 export default {
-  name: 'TodoListView',
+  name: 'HomeView',
   data: () => ({
-    todos: null,
+    tasks: null,
   }),
   mounted() {
-    this.fetchTodoSet();
+    this.fetchTaskSet();
   },
   methods: {
-    fetchTodoSet() {
+    fetchTaskSet() {
       this.$store
-        .dispatch('todo.fetch')
+        .dispatch('task.fetch')
         .then((response) => {
-          this.$data.todos = response;
-          // this.$data.todos = [];
+          this.$data.tasks = response;
+          // this.$data.tasks = [];
         })
         .catch((error) => {
           console.log(error);
         });
     },
 
-    editTodo(todo) {
+    editTask(task) {
       alert('editing...');
     },
 
-    removeTodo(todo) {
-      const todos = this.$data.todos;
-      todos.splice(todos.indexOf(todo), 1);
+    removeTask(task) {
+      const tasks = this.$data.tasks;
+      tasks.splice(tasks.indexOf(task), 1);
 
       // this.$store
-      //   .dispatch('todo.remove', todo.id)
+      //   .dispatch('task.remove', task.id)
       //   .then((response) => {
-      //     const todos = this.$data.todos;
-      //     todos.splice(todos.indexOf(todo), 1);
+      //     const tasks = this.$data.tasks;
+      //     tasks.splice(tasks.indexOf(task), 1);
       //   })
       //   .catch((error) => {
       //     console.log(error);

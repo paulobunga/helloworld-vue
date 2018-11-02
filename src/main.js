@@ -1,4 +1,4 @@
-import './common';
+import './common/init';
 
 import Vue from 'vue';
 
@@ -9,13 +9,11 @@ import './common/portal';
 
 import './components/shared';
 
-import './Todo';
-
 import store from './store';
 
 import App from './App.vue';
 
-import { AuthService } from './common/Auth.service';
+import { AuthService } from './Auth/Auth.service';
 
 import './registerServiceWorker';
 
@@ -27,7 +25,7 @@ const app = new Vue({
 app.$mount('#app');
 
 AuthService.initialize().then(() => {
-  if (AuthService.isAuthenticated() !== store.state.authenticated) {
+  if (AuthService.isAuthenticated() !== store.state.Auth.authenticated) {
     store.dispatch('auth.logout');
   }
 });

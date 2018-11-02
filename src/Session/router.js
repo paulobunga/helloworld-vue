@@ -1,11 +1,11 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import HomeView from '~/views/HomeView.vue';
-import AboutView from '~/views/AboutView.vue';
+import HomeView from '~/Home/HomeView.vue';
+import AboutView from '~/Other/AboutView.vue';
 
-// const HomeView = () => import(/* webpackChunkName: "HomeView" */ '~/views/HomeView.vue');
-// const AboutView = () => import(/* webpackChunkName: "AboutView" */ '~/views/AboutView.vue');
+// const HomeView = () => import(/* webpackChunkName: "HomeView" */ '~/Home/HomeView.vue');
+// const AboutView = () => import(/* webpackChunkName: "AboutView" */ '~/Other/AboutView.vue');
 
 Vue.use(Router);
 
@@ -31,7 +31,7 @@ const router = new Router({
         {
           path: '/sample',
           name: 'Sample',
-          component: () => import(/* webpackChunkName: "SampleView" */ '~/views/SampleView.vue'),
+          component: () => import(/* webpackChunkName: "SampleView" */ '~/Other/SampleView.vue'),
         },
       ]
       : []),

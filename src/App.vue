@@ -11,21 +11,18 @@
 <style src="./App.css">
 </style>
 
-<style src="./views/AuthView.css">
-</style>
-
 <script>
-// import Session from './Session.vue';
-// import Entrance from './Entrance.vue';
+// import Session from './Session/Session.vue';
+// import Entrance from './Entrance/Entrance.vue';
 
-const Session = () => import(/* webpackChunkName: "Session" */ './Session.vue');
-const Entrance = () => import(/* webpackChunkName: "Entrance" */ './Entrance.vue');
+const Session = () => import(/* webpackChunkName: "Session" */ './Session/Session.vue');
+const Entrance = () => import(/* webpackChunkName: "Entrance" */ './Entrance/Entrance.vue');
 
 export default {
   name: 'App',
 
   render(h) {
-    return h(this.$store.state.authenticated ? Session : Entrance);
+    return h(this.$store.state.Auth.authenticated ? Session : Entrance);
   },
 };
 </script>

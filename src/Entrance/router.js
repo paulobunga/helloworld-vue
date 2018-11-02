@@ -1,12 +1,15 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import LoginView from '~/views/LoginView.vue';
-import AboutView from '~/views/AboutView.vue';
-import SignupView from '~/views/SignupView.vue';
-import RecoveryView from '~/views/RecoveryView';
-// const LoginView = () => import(/* webpackChunkName: "LoginView" */ '~/views/LoginView.vue');
-// const AboutView = () => import(/* webpackChunkName: "AboutView" */ '~/views/AboutView.vue');
+import LoginView from './LoginView.vue';
+import SignupView from './SignupView.vue';
+import RecoveryView from './RecoveryView.vue';
+
+import AboutView from '~/Other/AboutView.vue';
+
+// const LoginView = () => import(/* webpackChunkName: "LoginView" */ './LoginView.vue');
+
+// const AboutView = () => import(/* webpackChunkName: "AboutView" */ '~/Other/AboutView.vue');
 
 Vue.use(Router);
 
@@ -42,7 +45,7 @@ const router = new Router({
         {
           path: '/sample',
           name: 'SampleView',
-          component: () => import(/* webpackChunkName: "SampleView" */ '~/views/SampleView.vue'),
+          component: () => import(/* webpackChunkName: "SampleView" */ '~/Other/SampleView.vue'),
         },
       ]
       : []),

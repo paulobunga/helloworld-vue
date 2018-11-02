@@ -1,7 +1,7 @@
-import { EventEmitter } from './events';
+import { EventEmitter } from '../common/events';
 
-import { API_ENDPOINT } from './config';
-import * as FetchHelper from './fetch.helper';
+import { API_ENDPOINT } from '../common/config';
+import * as FetchHelper from '../common/fetch.helper';
 
 export const AuthServiceImplementation = class AuthService {
   events = new EventEmitter();

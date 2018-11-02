@@ -24,5 +24,9 @@
   </v-app>
 </template>
 
+
+<style src="./Entrance.css">
+</style>
+
 <script src="./Entrance.js">
 </script>

@@ -4,9 +4,9 @@ import Vuex from 'vuex';
 import createPersistedState from 'vuex-persistedstate';
 
 import { debug } from '../common/logger';
-import { AuthService } from '../common/Auth.service';
+import { AuthService } from '../Auth/Auth.service';
 
-import todo from '../Todo/Todo.state';
+import modules from './state';
 
 Vue.use(Vuex);
 
@@ -23,16 +23,14 @@ const store = new Vuex.Store({
     }),
   ],
 
-  modules: {
-    todo,
-  },
+  modules,
 
   state: {
     processing: false,
     navigationDrawerVisible: false,
     detailsDrawerVisible: false,
-    authenticated: false,
-    user: null,
+    // authenticated: false,
+    // user: null,
   },
 
   mutations: {
@@ -48,18 +46,18 @@ const store = new Vuex.Store({
       state.detailsDrawerVisible = value;
     },
 
-    resetDrawers: (state) => {
-      state.navigationDrawerVisible = false;
-      state.detailsDrawerVisible = false;
-    },
+    // resetDrawers: (state) => {
+    //   state.navigationDrawerVisible = false;
+    //   state.detailsDrawerVisible = false;
+    // },
 
-    authenticated: (state, value = false) => {
-      state.authenticated = value;
-    },
+    // authenticated: (state, value = false) => {
+    //   state.authenticated = value;
+    // },
 
-    user: (state, value = null) => {
-      state.user = value;
-    },
+    // user: (state, value = null) => {
+    //   state.user = value;
+    // },
   },
 
   actions: {
@@ -91,47 +89,47 @@ const store = new Vuex.Store({
       context.commit('detailsDrawerVisible');
     },
 
-    'auth.login': (context, { username, password }) => {
-      context.dispatch('processing.start');
-      return AuthService.login(username, password)
-        .then(({ user }) => {
-          context.commit('user', user);
-          context.commit('authenticated', true);
-          return user;
-        })
-        .finally(() => context.dispatch('processing.done'));
-    },
+    // 'auth.login': (context, { username, password }) => {
+    //   context.dispatch('processing.start');
+    //   return AuthService.login(username, password)
+    //     .then(({ user }) => {
+    //       context.commit('user', user);
+    //       context.commit('authenticated', true);
+    //       return user;
+    //     })
+    //     .finally(() => context.dispatch('processing.done'));
+    // },
 
-    'auth.signup': (context, { name, email, password }) => {
-      context.dispatch('processing.start');
-      return AuthService.signup(name, email, password)
-        .then(({ user }) => {
-          context.commit('user', user);
-          context.commit('authenticated', true);
-          return user;
-        })
-        .finally(() => context.dispatch('processing.done'));
-    },
+    // 'auth.signup': (context, { name, email, password }) => {
+    //   context.dispatch('processing.start');
+    //   return AuthService.signup(name, email, password)
+    //     .then(({ user }) => {
+    //       context.commit('user', user);
+    //       context.commit('authenticated', true);
+    //       return user;
+    //     })
+    //     .finally(() => context.dispatch('processing.done'));
+    // },
 
-    'auth.initiateAccountRecovery': (context, { email }) => {
-      context.dispatch('processing.start');
-      return AuthService.initiateAccountRecovery(email)
-        .then(() => {
-          context.commit('authenticated', false);
-        })
-        .finally(() => context.dispatch('processing.done'));
-    },
+    // 'auth.initiateAccountRecovery': (context, { email }) => {
+    //   context.dispatch('processing.start');
+    //   return AuthService.initiateAccountRecovery(email)
+    //     .then(() => {
+    //       context.commit('authenticated', false);
+    //     })
+    //     .finally(() => context.dispatch('processing.done'));
+    // },
 
-    'auth.logout': (context) => {
-      context.dispatch('processing.start');
-      return AuthService.logout()
-        .then(() => {
-          context.commit('user');
-          context.commit('authenticated');
-          context.commit('resetDrawers');
-        })
-        .finally(() => context.dispatch('processing.done'));
-    },
+    // 'auth.logout': (context) => {
+    //   context.dispatch('processing.start');
+    //   return AuthService.logout()
+    //     .then(() => {
+    //       context.commit('user');
+    //       context.commit('authenticated');
+    //       context.commit('resetDrawers');
+    //     })
+    //     .finally(() => context.dispatch('processing.done'));
+    // },
   },
 
   getters: {

@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils';
-import AboutView from '~/views/AboutView.vue';
+import AboutView from '~/Other/AboutView.vue';
 
 describe('AboutView.vue', () => {
   it('renders props.msg when passed', () => {

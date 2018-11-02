@@ -14,12 +14,12 @@
         <v-list-tile avatar >
           <v-list-tile-avatar>
             <img
-              :src="this.$store.state.user.picture" >
+              :src="this.$store.state.Auth.user.picture" >
           </v-list-tile-avatar>
 
           <v-list-tile-content>
-            <v-list-tile-title>{{ this.$store.state.user.name }}</v-list-tile-title>
-            <v-list-tile-sub-title>{{ this.$store.state.user.email }}</v-list-tile-sub-title>
+            <v-list-tile-title>{{ this.$store.state.Auth.user.name }}</v-list-tile-title>
+            <v-list-tile-sub-title>{{ this.$store.state.Auth.user.email }}</v-list-tile-sub-title>
           </v-list-tile-content>
         </v-list-tile>
       </v-list>
