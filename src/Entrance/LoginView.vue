@@ -4,13 +4,10 @@
   <div class="auth-view">
 
     <v-form
-      v-model="isValid"
       class="pt-4">
 
       <v-text-field
         v-model="$data.username"
-        :rules="[$validate.required, $validate.email]"
-        validate-on-blur
         outline
         color="white"
         placeholder="Email"
@@ -18,20 +15,16 @@
 
       <v-text-field
         v-model="$data.password"
-        :append-icon="showPassword ? 'visibility_off' : 'visibility'"
-        :rules="[$validate.required, $validate.password]"
-        :type="showPassword ? 'text' : 'password'"
-        i-validate-on-blur
+
         outline
         color="white"
         placeholder="Password"
         autocomplete="current-password"
-        @click:append="showPassword = !showPassword"
       />
 
       <v-btn
         :loading="$store.state.processing"
-        :disabled="!isValid"
+        :disabled="!username || !password"
         class="white--text mt-2"
         block
         color="accent"
@@ -67,8 +60,6 @@ export default {
   data: () => ({
     username: '',
     password: '',
-    isValid: false,
-    showPassword: false,
   }),
   methods: {
     login() {
