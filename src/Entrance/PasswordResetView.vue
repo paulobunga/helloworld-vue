@@ -19,7 +19,7 @@
         class="white--text mt-2"
         block
         color="accent"
-        @click="initiateAccountRecovery()"
+        @click="initiatePasswordReset()"
       >
         Recover my account
       </v-btn>
@@ -53,8 +53,8 @@ export default {
     isValid: false,
   }),
   methods: {
-    initiateAccountRecovery() {
-      this.$store.dispatch('auth.initiateAccountRecovery', {
+    initiatePasswordReset() {
+      this.$store.dispatch('auth.initiatePasswordReset', {
         email: this.$data.email,
       });
       this.$router.push('/');

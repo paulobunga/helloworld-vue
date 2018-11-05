@@ -3,7 +3,7 @@ import Router from 'vue-router';
 
 import LoginView from './LoginView.vue';
 import SignupView from './SignupView.vue';
-import RecoveryView from './RecoveryView.vue';
+import PasswordResetView from './PasswordResetView.vue';
 
 import AboutView from '~/Other/AboutView.vue';
 
@@ -33,7 +33,7 @@ const router = new Router({
     {
       path: '/recover',
       name: 'Recover password',
-      component: RecoveryView,
+      component: PasswordResetView,
     },
     {
       path: '/about',

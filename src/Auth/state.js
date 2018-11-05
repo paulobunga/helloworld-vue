@@ -41,9 +41,9 @@ const state = {
         .finally(() => context.dispatch('processing.done'));
     },
 
-    'auth.initiateAccountRecovery': (context, { email }) => {
+    'auth.initiatePasswordReset': (context, { email }) => {
       context.dispatch('processing.start');
-      return AuthService.initiateAccountRecovery(email)
+      return AuthService.initiatePasswordReset(email)
         .then(() => {
           context.commit('authenticated', false);
         })
