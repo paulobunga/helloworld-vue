@@ -20,7 +20,7 @@ const state = {
     'task.fetch': (context) => {
       context.dispatch('processing.start');
 
-      return fetch(`${API_ENDPOINT}/task/index`, {
+      return fetch(`${API_ENDPOINT}/task`, {
         headers: {
           Authorization: `Bearer ${AuthService.token}`,
         },
