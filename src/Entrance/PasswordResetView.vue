@@ -1,6 +1,5 @@
 <template>
   <div class="auth-view">
-
     <v-form
       v-model="isValid"
       class="pt-4">
@@ -19,7 +18,7 @@
         class="white--text mt-2"
         block
         color="accent"
-        @click="initiatePasswordReset()"
+        @click="initiatePasswordReset();"
       >
         Recover my account
       </v-btn>
@@ -42,7 +41,6 @@
         to="/sign-up"
         right>Sign up</v-btn>
     </v-layout>
-
   </div>
 </template>
 

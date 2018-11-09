@@ -1,21 +1,16 @@
 <template>
   <v-app>
-
     <v-navigation-drawer
       id="navigationDrawer"
       v-model="$store.state.navigationDrawerVisible"
       app
       temporary
       fixed>
-
       <v-list
         class="pa-1"
         two-line>
-        <v-list-tile avatar >
-          <v-list-tile-avatar>
-            <img
-              :src="this.$store.state.Auth.user.picture" >
-          </v-list-tile-avatar>
+        <v-list-tile avatar>
+          <v-list-tile-avatar> <img :src="this.$store.state.Auth.user.picture" > </v-list-tile-avatar>
 
           <v-list-tile-content>
             <v-list-tile-title>{{ this.$store.state.Auth.user.name }}</v-list-tile-title>
@@ -24,7 +19,7 @@
         </v-list-tile>
       </v-list>
 
-      <v-divider/>
+      <v-divider />
 
       <v-list
         class="pt-0"
@@ -44,22 +39,15 @@
         <v-list-tile
           key="Logout"
           ripple
-          @click="logout()">
-          <v-list-tile-action>
-            <v-icon>exit_to_app</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>Log out</v-list-tile-title>
-          </v-list-tile-content>
+          @click="logout();">
+          <v-list-tile-action> <v-icon>exit_to_app</v-icon> </v-list-tile-action>
+          <v-list-tile-content> <v-list-tile-title>Log out</v-list-tile-title> </v-list-tile-content>
         </v-list-tile>
       </v-list>
 
       <div
         class="caption"
-        style="position: absolute; right: 16px; bottom: 16px;">
-        Version: {{ releaseVersion }}
-      </div>
-
+        style="position: absolute; right: 16px; bottom: 16px;">Version: {{ releaseVersion }}</div>
     </v-navigation-drawer>
 
     <v-navigation-drawer
@@ -70,10 +58,9 @@
       fixed
       right
       touchless
-      style="padding: 0;">
-
-      <portal-target name="detailsDrawer"/>
-
+      style="padding: 0;"
+    >
+      <portal-target name="detailsDrawer" />
     </v-navigation-drawer>
 
     <v-toolbar
@@ -81,34 +68,28 @@
       app
       fixed
       prominent>
-
       <v-toolbar-side-icon
         id="navigationDrawerTrigger"
         class="white--text"
-        @click.stop="$store.dispatch('NavigationDrawer.show')"/>
+        @click.stop="$store.dispatch('NavigationDrawer.show');"
+      />
 
       <v-toolbar-title class="white--text">{{ $route.name }}</v-toolbar-title>
 
-      <v-spacer/>
+      <v-spacer />
 
-      <portal-target name="toolbar"/>
-
+      <portal-target name="toolbar" />
     </v-toolbar>
 
     <v-content>
       <v-container
         fluid
         fill-height
-        class="-x-relative"
-      >
-        <transition name="fade">
-          <router-view/>
-        </transition>
+        class="-x-relative">
+        <transition name="fade"> <router-view /> </transition>
       </v-container>
     </v-content>
-
   </v-app>
 </template>
 
-<script src="./Session.js">
-</script>
+<script src="./Session.js"></script>

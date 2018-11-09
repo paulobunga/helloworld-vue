@@ -14,19 +14,15 @@
             justify-center
             column
             fill-height>
-            <img src="../assets/logo.png">
-            <router-view/>
+            <img src="../assets/logo.png" >
+            <router-view />
           </v-layout>
         </transition>
       </v-container>
     </v-content>
-
   </v-app>
 </template>
 
+<style src="./Entrance.css"></style>
 
-<style src="./Entrance.css">
-</style>
-
-<script src="./Entrance.js">
-</script>
+<script src="./Entrance.js"></script>

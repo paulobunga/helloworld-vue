@@ -1,13 +1,8 @@
 <template>
-  <div>
-
-    <h2>Use this view to develop/test components</h2>
-
-  </div>
+  <div><h2>Use this view to develop/test components</h2></div>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>
 
 <script>
 export default {

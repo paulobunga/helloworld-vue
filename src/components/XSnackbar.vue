@@ -1,4 +1,3 @@
-
 <template>
   <v-snackbar
     v-model="$data.visible"

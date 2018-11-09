@@ -1,21 +1,14 @@
-
 <template>
-
   <div class="auth-view">
-
-    <v-form
-      class="pt-4">
-
+    <v-form class="pt-4">
       <v-text-field
         v-model="$data.username"
         outline
         color="white"
-        placeholder="Email"
-      />
+        placeholder="Email" />
 
       <v-text-field
         v-model="$data.password"
-
         outline
         color="white"
         placeholder="Password"
@@ -28,7 +21,7 @@
         class="white--text mt-2"
         block
         color="accent"
-        @click="login()"
+        @click="login();"
       >
         Log in
       </v-btn>
@@ -51,7 +44,6 @@
         to="/recover"
         right>Recover</v-btn>
     </v-layout>
-
   </div>
 </template>
 

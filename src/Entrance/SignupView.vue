@@ -1,8 +1,5 @@
-
 <template>
-
   <div class="auth-view">
-
     <v-form
       v-model="isValid"
       class="pt-4">
@@ -34,7 +31,7 @@
         color="white"
         placeholder="Password"
         autocomplete="current-password"
-        @click:append="showPassword = !showPassword"
+        @click:append="showPassword = !showPassword;"
       />
 
       <v-btn
@@ -43,7 +40,7 @@
         class="white--text mt-2"
         block
         color="accent"
-        @click="signup()"
+        @click="signup();"
       >
         Sign up
       </v-btn>
@@ -66,9 +63,7 @@
         to="/recover"
         right>Recover</v-btn>
     </v-layout>
-
   </div>
-
 </template>
 
 <script>

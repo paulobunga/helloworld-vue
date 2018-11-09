@@ -2,8 +2,7 @@
   <v-layout
     column
     class="-x-view -x-view-content"
-    fill-height
-  >
+    fill-height>
     <v-layout
       v-if="$store.state.processing"
       justify-center
@@ -14,8 +13,7 @@
         :size="50"
         :width="2"
         color="secondary"
-        indeterminate
-      />
+        indeterminate />
       <h2 class="mt-4 text-primary text-uppercase fw-100">Loading</h2>
     </v-layout>
 
@@ -24,20 +22,19 @@
       justify-center
       align-center
       column
-      fill-height>
-
-      <h2 class="mt-4 text-primary fw-100" >No data was provided.</h2>
+      fill-height
+    >
+      <h2 class="mt-4 text-primary fw-100">No data was provided.</h2>
 
       <v-btn
         outline
         i-flat
         color="primary"
         class="mt-2"
-        @click="fetchTaskSet()">
+        @click="fetchTaskSet();">
         <span class="mr-2">Re-load</span>
         <v-icon>refresh</v-icon>
       </v-btn>
-
     </v-layout>
 
     <div v-if="!$store.state.processing && this.$data.tasks && this.$data.tasks.length">
@@ -50,19 +47,14 @@
             v-model="task.done"
             :label="task.label"
             :value="task.done"
+            color="primary" />
+          <v-spacer />
+          <v-btn icon> <v-icon
+            color="error"
+            @click="removeTask(task);">delete</v-icon> </v-btn>
+          <v-btn icon> <v-icon
             color="primary"
-          />
-          <v-spacer/>
-          <v-btn icon>
-            <v-icon
-              color="error"
-              @click="removeTask(task)">delete</v-icon>
-          </v-btn>
-          <v-btn icon>
-            <v-icon
-              color="primary"
-              @click="editTask(task)">edit</v-icon>
-          </v-btn>
+            @click="editTask(task);">edit</v-icon> </v-btn>
         </v-card-title>
       </v-card>
     </div>
@@ -70,10 +62,7 @@
     <v-btn
       fab
       class="fab-bottom"
-      color="accent">
-      <v-icon dark>add</v-icon>
-    </v-btn>
-
+      color="accent"> <v-icon dark>add</v-icon> </v-btn>
   </v-layout>
 </template>
 
