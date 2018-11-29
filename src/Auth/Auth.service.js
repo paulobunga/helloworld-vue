@@ -10,20 +10,24 @@ export const AuthServiceImplementation = class AuthService {
 
   password = '';
 
-  token = null;
+  _access_token = null;
 
-  async _loadSession() {
-    this.token = localStorage.getItem('auth.token') || null;
+  getAccessToken() {
+    return this._access_token;
   }
 
-  async _saveSession(token) {
-    this.token = token || null;
-    localStorage.setItem('auth.token', this.token);
+  async _loadSession() {
+    this._access_token = localStorage.getItem('auth.access_token') || null;
+  }
+
+  async _saveSession(access_token) {
+    this._access_token = access_token || null;
+    localStorage.setItem('auth.access_token', this._access_token);
   }
 
   async _clearSession() {
-    this.token = null;
-    localStorage.removeItem('auth.token');
+    this._access_token = null;
+    localStorage.removeItem('auth.access_token');
   }
 
   async initialize() {
@@ -31,7 +35,7 @@ export const AuthServiceImplementation = class AuthService {
   }
 
   isAuthenticated() {
-    return !!this.token;
+    return !!this._access_token;
   }
 
   login(username, password) {
@@ -46,8 +50,8 @@ export const AuthServiceImplementation = class AuthService {
       }),
     })
       .then(FetchHelper.ResponseHandler, FetchHelper.ErrorHandler)
-      .then(async ({ token, ...result }) => {
-        await this._saveSession(token);
+      .then(async ({ access_token, ...result }) => {
+        await this._saveSession(access_token);
         await this.events.emitAsync('login');
         return result;
       });
@@ -73,8 +77,8 @@ export const AuthServiceImplementation = class AuthService {
       }),
     })
       .then(FetchHelper.ResponseHandler, FetchHelper.ErrorHandler)
-      .then(({ token, ...result }) => {
-        this._saveSession(token);
+      .then(({ access_token, ...result }) => {
+        this._saveSession(access_token);
         return result;
       });
   }

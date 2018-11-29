@@ -22,7 +22,7 @@ const state = {
 
       return fetch(`${API_ENDPOINT}/task`, {
         headers: {
-          Authorization: `Bearer ${AuthService.token}`,
+          Authorization: `Bearer ${AuthService.getAccessToken()}`,
         },
       })
         .then(FetchHelper.ResponseHandler, FetchHelper.ErrorHandler)
@@ -40,7 +40,7 @@ const state = {
       return fetch(`${API_ENDPOINT}/ask/create`, {
         method: 'POST',
         headers: {
-          Authorization: `Bearer ${AuthService.token}`,
+          Authorization: `Bearer ${AuthService.getAccessToken()}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
@@ -58,7 +58,7 @@ const state = {
       return fetch(`${API_ENDPOINT}/task/${task.id}/edit`, {
         method: 'POST',
         headers: {
-          Authorization: `Bearer ${AuthService.token}`,
+          Authorization: `Bearer ${AuthService.getAccessToken()}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
@@ -76,7 +76,7 @@ const state = {
       return fetch(`${API_ENDPOINT}/task/${taskId}/remove`, {
         method: 'DELETE',
         headers: {
-          Authorization: `Bearer ${AuthService.token}`,
+          Authorization: `Bearer ${AuthService.getAccessToken()}`,
           // 'Content-Type': 'application/json',
         },
       })
