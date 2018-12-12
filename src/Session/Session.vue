@@ -5,12 +5,14 @@
       v-model="$store.state.navigationDrawerVisible"
       app
       temporary
-      fixed>
+      fixed
+    >
       <v-list
         class="pa-1"
-        two-line>
+        two-line
+      >
         <v-list-tile avatar>
-          <v-list-tile-avatar> <img :src="this.$store.state.Auth.user.picture" > </v-list-tile-avatar>
+          <v-list-tile-avatar> <img :src="this.$store.state.Auth.user.picture"> </v-list-tile-avatar>
 
           <v-list-tile-content>
             <v-list-tile-title>{{ this.$store.state.Auth.user.name }}</v-list-tile-title>
@@ -23,12 +25,14 @@
 
       <v-list
         class="pt-0"
-        dense>
+        dense
+      >
         <v-list-tile
           v-for="item in navigationMenuItems"
           :key="item.title"
           :to="item.route"
-          ripple>
+          ripple
+        >
           <v-list-tile-action>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-tile-action>
@@ -39,7 +43,8 @@
         <v-list-tile
           key="Logout"
           ripple
-          @click="logout();">
+          @click="logout()"
+        >
           <v-list-tile-action> <v-icon>exit_to_app</v-icon> </v-list-tile-action>
           <v-list-tile-content> <v-list-tile-title>Log out</v-list-tile-title> </v-list-tile-content>
         </v-list-tile>
@@ -47,7 +52,10 @@
 
       <div
         class="caption"
-        style="position: absolute; right: 16px; bottom: 16px;">Version: {{ releaseVersion }}</div>
+        style="position: absolute; right: 16px; bottom: 16px;"
+      >
+        Version: {{ releaseVersion }}
+      </div>
     </v-navigation-drawer>
 
     <v-navigation-drawer
@@ -67,14 +75,17 @@
       color="primary"
       app
       fixed
-      prominent>
+      prominent
+    >
       <v-toolbar-side-icon
         id="navigationDrawerTrigger"
         class="white--text"
-        @click.stop="$store.dispatch('NavigationDrawer.show');"
+        @click.stop="$store.dispatch('NavigationDrawer.show')"
       />
 
-      <v-toolbar-title class="white--text">{{ $route.name }}</v-toolbar-title>
+      <v-toolbar-title class="white--text">
+        {{ $route.name }}
+      </v-toolbar-title>
 
       <v-spacer />
 
@@ -85,8 +96,11 @@
       <v-container
         fluid
         fill-height
-        class="-x-relative">
-        <transition name="fade"> <router-view /> </transition>
+        class="-x-relative"
+      >
+        <transition name="fade">
+          <router-view />
+        </transition>
       </v-container>
     </v-content>
   </v-app>

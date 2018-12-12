@@ -2,7 +2,8 @@
   <div class="auth-view">
     <v-form
       v-model="isValid"
-      class="pt-4">
+      class="pt-4"
+    >
       <v-text-field
         v-model="$data.user.name"
         :rules="[$validate.required]"
@@ -31,7 +32,7 @@
         color="white"
         placeholder="Password"
         autocomplete="current-password"
-        @click:append="showPassword = !showPassword;"
+        @click:append="showPassword = !showPassword"
       />
 
       <v-btn
@@ -40,7 +41,7 @@
         class="white--text mt-2"
         block
         color="accent"
-        @click="signup();"
+        @click="signup()"
       >
         Sign up
       </v-btn>
@@ -49,19 +50,26 @@
     <v-layout
       class="mt-2"
       justify-space-between
-      row>
+      row
+    >
       <v-btn
         class="white--text text-xs-right"
         right
         flat
-        to="/login">Log in</v-btn>
+        to="/login"
+      >
+        Log in
+      </v-btn>
 
       <v-btn
         class="white--text text-xs-left"
         left
         flat
         to="/recover"
-        right>Recover</v-btn>
+        right
+      >
+        Recover
+      </v-btn>
     </v-layout>
   </div>
 </template>

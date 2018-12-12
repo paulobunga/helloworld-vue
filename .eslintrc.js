@@ -20,5 +20,6 @@ module.exports = {
     'arrow-parens': ['warn', 'always'],
     'vue/attributes-order': 'warn',
     'vue/require-default-prop': 'warn',
+    'vue/component-name-in-template-casing': ['warn', 'kebab-case'],
   },
 };

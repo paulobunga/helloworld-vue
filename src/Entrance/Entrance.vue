@@ -5,7 +5,8 @@
         :style="`background-color: ${$COLOR.primary};`"
         fluid
         fill-height
-        class="-x-relative">
+        class="-x-relative"
+      >
         <transition name="fade">
           <!-- <router-view/> -->
           <v-layout
@@ -13,8 +14,9 @@
             align-center
             justify-center
             column
-            fill-height>
-            <img src="../assets/logo.png" >
+            fill-height
+          >
+            <img src="../assets/logo.png">
             <router-view />
           </v-layout>
         </transition>

@@ -16,7 +16,10 @@
       flat
       small
       style="min-width: unset;"
-      @click.native="hide">Ok</v-btn>
+      @click.native="hide"
+    >
+      Ok
+    </v-btn>
   </v-snackbar>
 </template>
 

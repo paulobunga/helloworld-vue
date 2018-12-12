@@ -2,7 +2,8 @@
   <div class="auth-view">
     <v-form
       v-model="isValid"
-      class="pt-4">
+      class="pt-4"
+    >
       <v-text-field
         v-model="$data.email"
         :rules="[$validate.required, $validate.email]"
@@ -18,7 +19,7 @@
         class="white--text mt-2"
         block
         color="accent"
-        @click="initiatePasswordReset();"
+        @click="initiatePasswordReset()"
       >
         Recover my account
       </v-btn>
@@ -27,19 +28,26 @@
     <v-layout
       class="mt-2"
       justify-space-between
-      row>
+      row
+    >
       <v-btn
         class="white--text text-xs-right"
         right
         flat
-        to="/login">Log in</v-btn>
+        to="/login"
+      >
+        Log in
+      </v-btn>
 
       <v-btn
         class="white--text text-xs-left"
         left
         flat
         to="/sign-up"
-        right>Sign up</v-btn>
+        right
+      >
+        Sign up
+      </v-btn>
     </v-layout>
   </div>
 </template>

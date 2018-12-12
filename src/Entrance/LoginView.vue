@@ -5,7 +5,8 @@
         v-model="$data.username"
         outline
         color="white"
-        placeholder="Email" />
+        placeholder="Email"
+      />
 
       <v-text-field
         v-model="$data.password"
@@ -21,7 +22,7 @@
         class="white--text mt-2"
         block
         color="accent"
-        @click="login();"
+        @click="login()"
       >
         Log in
       </v-btn>
@@ -30,19 +31,26 @@
     <v-layout
       class="mt-2"
       justify-space-between
-      row>
+      row
+    >
       <v-btn
         class="white--text"
         right
         flat
-        to="/sign-up">Sign up</v-btn>
+        to="/sign-up"
+      >
+        Sign up
+      </v-btn>
 
       <v-btn
         class="white--text"
         left
         flat
         to="/recover"
-        right>Recover</v-btn>
+        right
+      >
+        Recover
+      </v-btn>
     </v-layout>
   </div>
 </template>
