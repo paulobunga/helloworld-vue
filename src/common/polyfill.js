@@ -1,4 +1,1 @@
-import 'babel-polyfill';
-import 'intl';
-import 'intl/locale-data/jsonp/fr';
-import 'whatwg-fetch';
+export * from 'starter-lib/dist/browser/polyfill';
