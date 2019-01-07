@@ -1,7 +1,11 @@
 {
-  "name": "HelloWorld",
-  "version": "0.1.0",
   "private": true,
+  "name": "starter-vue",
+  "version": "0.1.0",
+  "engines": {
+    "node": "^10.0.0",
+    "npm": "^6.0.0"
+  },
   "scripts": {
     "dev": "npm run serve",
     "serve": "vue-cli-service serve",
