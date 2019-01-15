@@ -13,7 +13,7 @@
     "lint:custom": "eslint --ext .js,.vue ./",
     "lint:critical": "eslint --no-eslintrc --config .eslintrc.critical.json ./src",
     "format": "npm run format:all && npm run format:js",
-    "format:all": "prettier ./**/*.{md,json,js,css,scss,vue} --write",
+    "format:all": "prettier './**/*.{md,json,js,css,scss,vue}' --write",
     "format:js": "eslint -o /dev/null --fix --ext .js,.vue ./ || true",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
@@ -24,20 +24,20 @@
     "portal-vue": "~1.5.1",
     "register-service-worker": "~1.5.2",
     "starter-lib": "git+https://github.com/emiketic/emiketic-starter-lib.git#0.5.4",
-    "vue": "~2.5.21",
+    "vue": "~2.5.22",
     "vue-router": "~3.0.1",
-    "vuetify": "~1.4.0",
+    "vuetify": "~1.4.1",
     "vuex": "~3.0.1",
     "vuex-persistedstate": "~2.5.4",
     "vuex-router-sync": "~5.0.0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~3.2.2",
-    "@vue/cli-plugin-e2e-nightwatch": "~3.2.2",
-    "@vue/cli-plugin-eslint": "~3.2.2",
-    "@vue/cli-plugin-pwa": "~3.2.2",
-    "@vue/cli-plugin-unit-jest": "~3.2.3",
-    "@vue/cli-service": "~3.2.3",
+    "@vue/cli-plugin-babel": "~3.3.0",
+    "@vue/cli-plugin-e2e-nightwatch": "~3.3.0",
+    "@vue/cli-plugin-eslint": "~3.3.0",
+    "@vue/cli-plugin-pwa": "~3.3.0",
+    "@vue/cli-plugin-unit-jest": "~3.3.0",
+    "@vue/cli-service": "~3.3.0",
     "@vue/eslint-config-airbnb": "~4.0.0",
     "@vue/test-utils": "~1.0.0-beta.25",
     "babel-jest": "~23.6.0",
@@ -51,6 +51,6 @@
     "sass-loader": "~7.1.0",
     "stylus": "~0.54.5",
     "stylus-loader": "~3.0.2",
-    "vue-template-compiler": "~2.5.21"
+    "vue-template-compiler": "~2.5.22"
   }
 }
