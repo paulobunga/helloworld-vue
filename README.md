@@ -1,6 +1,13 @@
-# Vue.js Starter
+# Starter Webapp (Vue.js/Vuex)
 
 A boilerplate and reference implementation for web applications built with Vue.js, Vuex, and Vuetify.
+
+## Preview
+
+- http://vue.starter.emiketic.com
+- Access credentials:
+  - email: `client@starter.emiketic.com`
+  - password: `password`
 
 ## Requirements
 
