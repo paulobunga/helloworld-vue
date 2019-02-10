@@ -56,7 +56,7 @@
         <v-card-title>
           <v-checkbox
             v-model="task.done"
-            :label="task.label"
+            :label="task.title"
             :value="task.done"
             color="primary"
           />
