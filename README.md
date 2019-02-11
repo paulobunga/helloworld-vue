@@ -1,5 +1,7 @@
 # Starter Webapp (Vue.js/Vuex)
 
+![](https://img.shields.io/david/emiketic/emiketic-starter-vue.svg?style=for-the-badge)
+
 A boilerplate and reference implementation for web applications built with Vue.js, Vuex, and Vuetify.
 
 ## Preview
