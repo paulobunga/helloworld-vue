@@ -120,7 +120,7 @@ export default {
     },
 
     removeTask(task) {
-      const tasks = this.$data.tasks;
+      const { tasks } = this.$data;
       tasks.splice(tasks.indexOf(task), 1);
 
       // this.$store

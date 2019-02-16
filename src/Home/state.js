@@ -27,7 +27,7 @@ const state = {
       })
         .then(FetchHelper.ResponseHandler, FetchHelper.ErrorHandler)
         .then(async ({ ...result }) => {
-          const data = result.data;
+          const { data } = result;
           context.commit('task', data);
           return data;
         })
