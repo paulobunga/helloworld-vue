@@ -58,7 +58,7 @@ AuthService.isAuthenticated();
 $app.$store.state.myField;
 
 // dispatch action from store
-$app.$store.dispatch('myAction' /* args */);
+$app.$store.dispatch('MyModule/myAction' /* args */);
 ```
 
 ## Ressources

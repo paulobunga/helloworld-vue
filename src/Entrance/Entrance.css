@@ -1,7 +1,6 @@
 .auth-view .v-text-field--outline .v-input__slot,
 .auth-view .v-text-field--outline .v-input__slot:hover,
 .auth-view .v-text-field--outline:not(.v-input--is-focused) .v-input__slot:hover {
-  border: 1px solid white;
   min-height: auto;
   border-radius: 0px;
 }

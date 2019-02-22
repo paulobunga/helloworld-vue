@@ -5,7 +5,7 @@
     fill-height
   >
     <v-layout
-      v-if="$store.state.processing"
+      v-if="$store.state.Activity.processing"
       justify-center
       align-center
       column
@@ -23,7 +23,7 @@
     </v-layout>
 
     <v-layout
-      v-if="!$store.state.processing && this.$data.tasks && !this.$data.tasks.length"
+      v-if="!$store.state.Activity.processing && this.$data.tasks && !this.$data.tasks.length"
       justify-center
       align-center
       column
@@ -47,7 +47,7 @@
       </v-btn>
     </v-layout>
 
-    <div v-if="!$store.state.processing && this.$data.tasks && this.$data.tasks.length">
+    <div v-if="!$store.state.Activity.processing && this.$data.tasks && this.$data.tasks.length">
       <v-card
         v-for="task in tasks"
         :key="task.id"
@@ -105,7 +105,7 @@ export default {
   methods: {
     fetchTaskSet() {
       this.$store
-        .dispatch('task.fetch')
+        .dispatch('Home/task.fetch')
         .then((response) => {
           this.$data.tasks = response;
           // this.$data.tasks = [];
@@ -124,7 +124,7 @@ export default {
       tasks.splice(tasks.indexOf(task), 1);
 
       // this.$store
-      //   .dispatch('task.remove', task.id)
+      //   .dispatch('Home/task.remove', task.id)
       //   .then((response) => {
       //     const tasks = this.$data.tasks;
       //     tasks.splice(tasks.indexOf(task), 1);

@@ -1,64 +1,65 @@
 import { AuthService } from './Auth.service';
 
+import * as Activity from '../Shared/Activity.service';
+
 /* eslint no-param-reassign: ["error", { "props": false }] */
 
+const MODULE = 'Auth';
+
 const state = {
+  namespaced: true,
+
   state: {
     authenticated: false,
     user: null,
   },
 
   mutations: {
-    authenticated: (state, value = false) => {
-      state.authenticated = value;
+    authenticate: (state, user = null) => {
+      state.user = user;
+      state.authenticated = true;
     },
 
-    user: (state, value = null) => {
-      state.user = value;
+    deauthenticate: (state) => {
+      state.user = null;
+      state.authenticated = false;
     },
   },
 
   actions: {
-    'auth.login': (context, { username, password }) => {
-      context.dispatch('processing.start');
+    login: (context, { username, password }) => {
+      Activity.processing(MODULE, 'login');
       return AuthService.login(username, password)
         .then(({ user }) => {
-          context.commit('user', user);
-          context.commit('authenticated', true);
+          context.commit('authenticate', user);
           return user;
         })
-        .finally(() => context.dispatch('processing.done'));
+        .finally(() => Activity.done(MODULE, 'login'));
     },
 
-    'auth.signup': (context, { name, email, password }) => {
-      context.dispatch('processing.start');
+    signup: (context, { name, email, password }) => {
+      Activity.processing(MODULE, 'signup');
       return AuthService.signup(name, email, password)
         .then(({ user }) => {
-          context.commit('user', user);
-          context.commit('authenticated', true);
+          context.commit('authenticate', user);
           return user;
         })
-        .finally(() => context.dispatch('processing.done'));
+        .finally(() => Activity.done(MODULE, 'signup'));
     },
 
-    'auth.initiatePasswordReset': (context, { email }) => {
-      context.dispatch('processing.start');
-      return AuthService.initiatePasswordReset(email)
-        .then(() => {
-          context.commit('authenticated', false);
-        })
-        .finally(() => context.dispatch('processing.done'));
+    initiatePasswordReset: (context, { email }) => {
+      Activity.processing(MODULE, 'initiatePasswordReset');
+      return AuthService.initiatePasswordReset(email).finally(() => Activity.done(MODULE, 'initiatePasswordReset'));
     },
 
-    'auth.logout': (context) => {
-      context.dispatch('processing.start');
+    logout: (context) => {
+      Activity.processing(MODULE, 'logout');
       return AuthService.logout()
         .then(() => {
-          context.commit('user');
-          context.commit('authenticated');
+          context.commit('deauthenticate');
           context.commit('resetDrawers');
         })
-        .finally(() => context.dispatch('processing.done'));
+        .finally(() => Activity.done(MODULE, 'logout'));
     },
   },
 

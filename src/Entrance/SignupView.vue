@@ -36,7 +36,7 @@
       />
 
       <v-btn
-        :loading="$store.state.processing"
+        :loading="$store.state.Activity.processing"
         :disabled="!isValid"
         class="white--text mt-2"
         block
@@ -87,7 +87,7 @@ export default {
   }),
   methods: {
     signup() {
-      this.$store.dispatch('auth.signup', this.$data.user);
+      this.$store.dispatch('Auth/signup', this.$data.user);
     },
   },
 };

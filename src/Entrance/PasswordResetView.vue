@@ -14,7 +14,7 @@
       />
 
       <v-btn
-        :loading="$store.state.processing"
+        :loading="$store.state.Activity.processing"
         :disabled="!isValid"
         class="white--text mt-2"
         block
@@ -60,7 +60,7 @@ export default {
   }),
   methods: {
     initiatePasswordReset() {
-      this.$store.dispatch('auth.initiatePasswordReset', {
+      this.$store.dispatch('Auth/initiatePasswordReset', {
         email: this.$data.email,
       });
       this.$router.push('/');

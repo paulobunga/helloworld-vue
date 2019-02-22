@@ -17,7 +17,7 @@
       />
 
       <v-btn
-        :loading="$store.state.processing"
+        :loading="$store.state.Activity.processing"
         :disabled="!username || !password"
         class="white--text mt-2"
         block
@@ -63,7 +63,7 @@ export default {
   }),
   methods: {
     login() {
-      this.$store.dispatch('auth.login', {
+      this.$store.dispatch('Auth/login', {
         username: this.$data.username,
         password: this.$data.password,
       });

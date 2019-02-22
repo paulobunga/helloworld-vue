@@ -1,11 +1,18 @@
 import { AuthService } from '../Auth/Auth.service';
 
 import { API_ENDPOINT } from '../common/config';
+
 import * as FetchHelper from '../common/fetch.helper';
+
+import * as Activity from '../Shared/Activity.service';
 
 /* eslint no-param-reassign: ["error", { "props": false }] */
 
+const MODULE = 'Home';
+
 const state = {
+  namespaced: true,
+
   state: {
     task: null,
   },
@@ -18,7 +25,7 @@ const state = {
 
   actions: {
     'task.fetch': (context) => {
-      context.dispatch('processing.start');
+      Activity.processing(MODULE, 'operation');
 
       return fetch(`${API_ENDPOINT}/task`, {
         headers: {
@@ -31,11 +38,11 @@ const state = {
           context.commit('task', data);
           return data;
         })
-        .finally(() => context.dispatch('processing.done'));
+        .finally(() => Activity.done(MODULE, 'operation'));
     },
 
     'task.create': (context, task) => {
-      context.dispatch('processing.start');
+      Activity.processing(MODULE, 'operation');
 
       return fetch(`${API_ENDPOINT}/ask/create`, {
         method: 'POST',
@@ -49,11 +56,11 @@ const state = {
       })
         .then(FetchHelper.ResponseHandler, FetchHelper.ErrorHandler)
         .then(async ({ ...result }) => result.task)
-        .finally(() => context.dispatch('processing.done'));
+        .finally(() => Activity.done(MODULE, 'operation'));
     },
 
     'task.edit': (context, task) => {
-      context.dispatch('processing.start');
+      Activity.processing(MODULE, 'operation');
 
       return fetch(`${API_ENDPOINT}/task/${task.id}/edit`, {
         method: 'POST',
@@ -67,11 +74,11 @@ const state = {
       })
         .then(FetchHelper.ResponseHandler, FetchHelper.ErrorHandler)
         .then(async ({ ...result }) => result.task)
-        .finally(() => context.dispatch('processing.done'));
+        .finally(() => Activity.done(MODULE, 'operation'));
     },
 
     'task.remove': (context, taskId) => {
-      context.dispatch('processing.start');
+      Activity.processing(MODULE, 'operation');
 
       return fetch(`${API_ENDPOINT}/task/${taskId}/remove`, {
         method: 'DELETE',
@@ -82,7 +89,7 @@ const state = {
       })
         .then(FetchHelper.ResponseHandler, FetchHelper.ErrorHandler)
         .then(async ({ ...result }) => result.task)
-        .finally(() => context.dispatch('processing.done'));
+        .finally(() => Activity.done(MODULE, 'operation'));
     },
   },
 
