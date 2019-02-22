@@ -12,14 +12,13 @@ Vue.use(Vuex);
 /* eslint no-param-reassign: ["error", { "props": false }] */
 
 const store = new Vuex.Store({
+  strict: process.env.NODE_ENV === 'development',
+
   plugins: [
-    createPersistedState({ // @TODO use persister() function in module state definition
+    createPersistedState({
+      // @TODO use persister() function in module state definition
       reducer({
-        route,
-        Shared,
-        navigationDrawerVisible,
-        detailsDrawerVisible,
-        ...state
+        route, Shared, Activity, navigationDrawerVisible, detailsDrawerVisible, ...state
       }) {
         return state;
       },
@@ -71,7 +70,7 @@ const store = new Vuex.Store({
   },
 
   getters: {
-    development: () => process.env.NODE_ENV === 'development',
+    developmentMode: () => process.env.NODE_ENV === 'development',
   },
 });
 

@@ -4,24 +4,35 @@ const state = {
   namespaced: true,
 
   state: {
+    processingByOperation: {
+      default: false,
+    },
     processing: false,
   },
 
   mutations: {
-    processing: (state) => {
-      state.processing = true;
+    processing: (state, { operation }) => {
+      state.processingByOperation = {
+        ...state.processingByOperation,
+        [operation]: true,
+      };
+      state.processing = Object.values(state.processingByOperation).reduce((acc, v) => acc || v, false);
     },
-    done: (state) => {
-      state.processing = false;
+    done: (state, { operation }) => {
+      state.processingByOperation = {
+        ...state.processingByOperation,
+        [operation]: false,
+      };
+      state.processing = Object.values(state.processingByOperation).reduce((acc, v) => acc || v, false);
     },
   },
 
   actions: {
-    processing: (context) => {
-      context.commit('processing');
+    processing: (context, operation) => {
+      context.commit('processing', { operation });
     },
-    done: (context) => {
-      context.commit('done');
+    done: (context, operation) => {
+      context.commit('done', { operation });
     },
   },
 
