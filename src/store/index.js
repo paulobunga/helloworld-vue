@@ -13,9 +13,13 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
   plugins: [
-    createPersistedState({
+    createPersistedState({ // @TODO use persister() function in module state definition
       reducer({
-        route, navigationDrawerVisible, detailsDrawerVisible, ...state
+        route,
+        Shared,
+        navigationDrawerVisible,
+        detailsDrawerVisible,
+        ...state
       }) {
         return state;
       },

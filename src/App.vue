@@ -12,6 +12,8 @@ $color-pack = false
 <script>
 import { mapState } from 'vuex';
 
+import LandingView from './Entrance/LandingView.vue';
+
 // import Session from './Session/Session.vue';
 // import Entrance from './Entrance/Entrance.vue';
 
@@ -36,12 +38,13 @@ export default {
   render(h) {
     const { ready, initialized, authenticated } = this;
 
+    console.log(ready, initialized, authenticated);
+
     if (!ready || (authenticated && !initialized)) {
-      return;
-      // return LandingView; // @TODO add landing view
+      return h(LandingView);
     }
 
-    return h(this.$store.state.Auth.authenticated ? Session : Entrance);
+    return h(authenticated ? Session : Entrance);
   },
 };
 </script>
