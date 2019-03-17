@@ -80,11 +80,10 @@ const state = {
     'task.remove': (context, taskId) => {
       Activity.processing(MODULE, 'operation');
 
-      return fetch(`${API_ENDPOINT}/task/${taskId}/remove`, {
-        method: 'DELETE',
+      return fetch(`${API_ENDPOINT}/task/${taskId}/delete`, {
+        method: 'POST',
         headers: {
           Authorization: `Bearer ${AuthService.getAccessToken()}`,
-          // 'Content-Type': 'application/json',
         },
       })
         .then(FetchHelper.ResponseHandler, FetchHelper.ErrorHandler)

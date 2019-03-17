@@ -121,17 +121,12 @@ export default {
 
     removeTask(task) {
       const { tasks } = this.$data;
-      tasks.splice(tasks.indexOf(task), 1);
-
-      // this.$store
-      //   .dispatch('Home/task.remove', task.id)
-      //   .then((response) => {
-      //     const tasks = this.$data.tasks;
-      //     tasks.splice(tasks.indexOf(task), 1);
-      //   })
-      //   .catch((error) => {
-      //     console.log(error);
-      //   });
+      console.log(tasks);
+      tasks.splice(tasks.indexOf(task));
+      this.$store.dispatch('Home/task.remove', task.id).then((response) => {
+        const { tasks } = this.$data;
+        tasks.splice(tasks.indexOf(task));
+      });
     },
   },
 };

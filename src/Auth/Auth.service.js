@@ -62,11 +62,12 @@ export const AuthServiceImplementation = class AuthService {
     await this._clearSession();
   }
 
-  signup(payload) {
-    const { name, email, password } = payload;
-
-    const user = { name, email, password };
-
+  signup(name, email, password) {
+    const user = {
+      name,
+      email,
+      password,
+    };
     return fetch(`${API_ENDPOINT}/auth/signup`, {
       method: 'POST',
       headers: {
@@ -74,6 +75,7 @@ export const AuthServiceImplementation = class AuthService {
       },
       body: JSON.stringify({
         user,
+        client: {},
       }),
     })
       .then(FetchHelper.ResponseHandler, FetchHelper.ErrorHandler)

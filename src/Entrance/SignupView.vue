@@ -87,7 +87,11 @@ export default {
   }),
   methods: {
     signup() {
-      this.$store.dispatch('Auth/signup', this.$data.user);
+      this.$store.dispatch('Auth/signup', {
+        name: this.$data.user.name,
+        email: this.$data.user.email,
+        password: this.$data.user.password,
+      });
     },
   },
 };
