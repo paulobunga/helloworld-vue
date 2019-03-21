@@ -21,7 +21,7 @@
         color="accent"
         @click="initiatePasswordReset()"
       >
-        Recover my account
+        Reset my password
       </v-btn>
     </v-form>
 
