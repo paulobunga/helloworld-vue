@@ -27,7 +27,7 @@ const state = {
     'task.fetch': (context) => {
       Activity.processing(MODULE, 'operation');
 
-      return fetch(`${API_ENDPOINT}/task`, {
+      return fetch(`${API_ENDPOINT}/client/task`, {
         headers: {
           Authorization: `Bearer ${AuthService.getAccessToken()}`,
         },
@@ -62,7 +62,7 @@ const state = {
     'task.edit': (context, task) => {
       Activity.processing(MODULE, 'operation');
 
-      return fetch(`${API_ENDPOINT}/task/${task.id}/edit`, {
+      return fetch(`${API_ENDPOINT}/client/task/${task.id}/edit`, {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${AuthService.getAccessToken()}`,
@@ -80,7 +80,7 @@ const state = {
     'task.remove': (context, taskId) => {
       Activity.processing(MODULE, 'operation');
 
-      return fetch(`${API_ENDPOINT}/task/${taskId}/delete`, {
+      return fetch(`${API_ENDPOINT}/client/task/${taskId}/delete`, {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${AuthService.getAccessToken()}`,
