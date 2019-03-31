@@ -12,7 +12,7 @@ import './components/shared';
 import store from './store';
 
 import * as FetchHelper from './common/fetch.helper';
-import * as Activity from './Shared/Activity.service';
+import * as Dialog from './Shared/Dialog';
 
 import { AuthService } from './Auth/Auth.service';
 
@@ -47,11 +47,11 @@ if (process.env.NODE_ENV === 'development') {
   store.dispatch('Shared/ready');
 
   if (AuthService.isAuthenticated()) {
-    store.dispatch('Shared/initialize').catch((error) => Activity.toast('failure', error.message));
+    store.dispatch('Shared/initialize').catch((error) => Dialog.toast(Dialog.FAILURE, error.message));
   }
 
   AuthService.events.on('login', () => {
-    store.dispatch('Shared/initialize').catch((error) => Activity.toast('failure', error.message));
+    store.dispatch('Shared/initialize').catch((error) => Dialog.toast(Dialog.FAILURE, error.message));
   });
 
   AuthService.events.on('logout', () => {

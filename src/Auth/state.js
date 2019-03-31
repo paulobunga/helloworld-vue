@@ -1,6 +1,6 @@
 import { AuthService } from './Auth.service';
 
-import * as Activity from '../Shared/Activity.service';
+import * as Activity from '../Shared/Activity';
 
 /* eslint no-param-reassign: ["error", { "props": false }] */
 

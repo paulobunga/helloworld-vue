@@ -4,7 +4,7 @@ import { API_ENDPOINT } from '../common/config';
 
 import * as FetchHelper from '../common/fetch.helper';
 
-import * as Activity from '../Shared/Activity.service';
+import * as Activity from '../Shared/Activity';
 
 /* eslint no-param-reassign: ["error", { "props": false }] */
 
