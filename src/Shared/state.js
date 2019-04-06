@@ -26,14 +26,10 @@ const state = {
 
   actions: {
     ready: (context) => {
-      Logger.debug('$ready');
-
       context.commit('ready', true);
     },
 
     initialize: async (context) => {
-      Logger.debug('$initialize');
-
       await Promise.all([
         new Promise((resolve) => setTimeout(resolve, 2000)),
         // context.dispatch('Module/operation'),
@@ -43,8 +39,6 @@ const state = {
     },
 
     uninitialize: (context) => {
-      Logger.debug('$uninitialize');
-
       context.commit('uninitialize');
     },
   },
