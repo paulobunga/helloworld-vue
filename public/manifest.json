@@ -1,23 +1,27 @@
 {
-  "name": "Hello World",
-  "short_name": "Hello World",
-  "description": "Some slogan here!",
-  "lang": "fr",
-  "start_url": "/",
+  "name": "Starter",
+  "short_name": "Starter",
+  "description": "Starter!",
+  "lang": "en",
+  "start_url": "./index.html",
   "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#607D8B",
   "icons": [
     {
-      "src": "/img/icons/android-chrome-192x192.png",
+      "src": "pwa/app-64x64.png",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "pwa/app-192x192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/img/icons/android-chrome-512x512.png",
+      "src": "pwa/app-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
-  ],
-  "background_color": "#FFFFFF",
-  "theme_color": "#607D8B",
-  "related_applications": []
+  ]
 }
