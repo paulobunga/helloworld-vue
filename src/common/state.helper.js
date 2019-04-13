@@ -1,1 +1,1 @@
-// export * from 'starter-lib/src/vuex/state.helper';
+// export * from 'helloworld-lib/src/vuex/state.helper';

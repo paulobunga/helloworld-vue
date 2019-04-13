@@ -62,5 +62,5 @@ const router = new Router({
 export default router;
 
 router.afterEach((to, from) => {
-  document.title = `Starter | ${to.name}`;
+  document.title = `Hello World | ${to.name}`;
 });

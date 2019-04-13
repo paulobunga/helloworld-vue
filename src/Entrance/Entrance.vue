@@ -2,7 +2,6 @@
   <v-app>
     <v-content>
       <v-container
-        :style="`background-color: ${$COLOR.primary};`"
         fluid
         fill-height
         class="-x-relative"

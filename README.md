@@ -1,14 +1,14 @@
-# Starter Webapp (Vue.js/Vuex)
+# Hello WorldWebapp (Vue.js/Vuex)
 
-![](https://img.shields.io/david/emiketic/emiketic-starter-vue.svg?style=for-the-badge)
+![](https://img.shields.io/david/emiketic/helloworld-vue.svg?style=for-the-badge)
 
 A boilerplate and reference implementation for web applications built with Vue.js, Vuex, and Vuetify.
 
 ## Preview
 
-- http://vue.starter.emiketic.com
+- http://vue.helloworld.emiketic.com
 - Access credentials:
-  - email: `client@starter.emiketic.com`
+  - email: `client@helloworld.emiketic.com`
   - password: `password`
 
 ## Requirements
