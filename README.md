@@ -1,4 +1,4 @@
-# Hello WorldWebapp (Vue.js/Vuex)
+# Hello World Webapp (Vue.js/Vuex)
 
 ![](https://img.shields.io/david/emiketic/helloworld-vue.svg?style=for-the-badge)
 
