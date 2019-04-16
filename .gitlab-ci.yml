@@ -57,7 +57,7 @@ build:
     - npm run build
   artifacts:
     paths:
-      - ./build/
+      - ./dist/
 
 # deploy:
 #   stage: deploy
@@ -68,7 +68,7 @@ build:
 #   only:
 #     - master
 #   script:
-#     - ./scripts/deploy.sh ./build/
+#     - ./scripts/deploy.sh ./dist/
 
 deploy:
   stage: deploy
@@ -80,4 +80,4 @@ deploy:
   only:
     - master
   script:
-    - ./scripts/deploy.sh ./build/
+    - ./scripts/deploy.sh ./dist/
