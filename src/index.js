@@ -17,7 +17,7 @@ import bootstrap from './bootstrap';
 
 import App from './App.vue';
 
-import './registerServiceWorker';
+// import './registerServiceWorker';
 
 const app = new Vue({
   store,
