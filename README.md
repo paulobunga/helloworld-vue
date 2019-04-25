@@ -13,7 +13,7 @@ A boilerplate and reference implementation for web applications built with Vue.j
 
 ## Requirements
 
-- Node.js v8
+- Node.js v10
 
 ## Usage
 
